@@ -10,10 +10,42 @@ const inter = Inter({
   display: "swap",
 });
 
+const TITLE = "Vetta — Meet the people worth meeting";
+const DESCRIPTION =
+  "The vetted network of accomplished people. Verified track records, paid 1:1 Sessions, live Roundtables and Notes worth reading. Earned, not claimed.";
+
 export const metadata: Metadata = {
-  title: "Vetta — Meet the people worth meeting",
-  description:
-    "Vetta is the vetted network of accomplished people. Real track records, real conversations — Sessions, Roundtables and Notes from verified Luminaries.",
+  metadataBase: new URL("https://vetta.network"),
+  title: { default: TITLE, template: "%s · Vetta" },
+  description: DESCRIPTION,
+  applicationName: "Vetta",
+  keywords: [
+    "professional network",
+    "verified experts",
+    "book a session",
+    "mentorship",
+    "roundtables",
+    "Luminaries",
+  ],
+  openGraph: {
+    type: "website",
+    siteName: "Vetta",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Vetta",
+    statusBarStyle: "black-translucent",
+  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {

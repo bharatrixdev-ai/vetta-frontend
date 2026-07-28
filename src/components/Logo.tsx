@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** The Vetta ribbon-V — matches the brand mark: blue left stroke, lilac→violet right. */
+/** The Vetta ribbon-V — blue left stroke, lilac→violet right sweeping into the tail. */
 export function VMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" className={cn("h-8 w-8", className)} aria-hidden fill="none">
@@ -29,7 +29,7 @@ export function VMark({ className }: { className?: string }) {
   );
 }
 
-/** App-icon tile — dark tile in dark mode, white tile in light mode (matches attached logos). */
+/** App-icon tile — dark in dark mode, white in light mode (matches the brand icons). */
 export function AppTile({ className, mark }: { className?: string; mark?: string }) {
   return (
     <div
@@ -55,7 +55,7 @@ export function Logo({
       <VMark />
       <span
         className={cn(
-          "text-lg font-semibold tracking-[0.06em] text-ink lowercase",
+          "text-lg font-semibold lowercase tracking-[0.06em] text-ink",
           wordClass
         )}
       >
