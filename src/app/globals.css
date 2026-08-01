@@ -65,6 +65,35 @@ html.light {
   --glow-2: rgba(124, 111, 255, 0.12);
 }
 
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) {
+    --bg: #f4f5f8;
+    --surface: #ffffff;
+    --elev: #ffffff;
+    --line: rgba(16, 24, 40, 0.09);
+    --line-2: rgba(16, 24, 40, 0.2);
+    --ink: #0f1218;
+    --mute: #55607a;
+    --faint: #7d879c;
+    --wash: rgba(16, 24, 40, 0.045);
+    --wash-2: rgba(16, 24, 40, 0.08);
+
+    --glass-bg: rgba(255, 255, 255, 0.66);
+    --glass-border: rgba(16, 24, 40, 0.08);
+    --glass-strong-bg: rgba(255, 255, 255, 0.8);
+    --glass-strong-border: rgba(16, 24, 40, 0.09);
+    --card-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
+    --lift-shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
+    --scrim: rgba(15, 18, 24, 0.45);
+
+    --grad-text-from: #2f66e8;
+    --grad-text-mid: #5a4fe0;
+    --grad-text-to: #7c6fff;
+    --glow-1: rgba(79, 141, 255, 0.16);
+    --glow-2: rgba(124, 111, 255, 0.12);
+  }
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
 import "./globals.css";
 import { RoleProvider } from "@/lib/role";
+import { ThemeSync } from "@/components/ThemeToggle";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -66,6 +67,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={theme === "light" ? "light" : undefined}>
       <body className={`${inter.variable} antialiased`}>
+        <ThemeSync />
         <RoleProvider>{children}</RoleProvider>
       </body>
     </html>

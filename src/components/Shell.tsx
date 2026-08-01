@@ -56,7 +56,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <Link href="/app" aria-label="Vetta home">
             <Logo />
           </Link>
-          <ThemeToggle className="h-8 w-8" />
         </div>
 
         <nav className="mt-8 flex flex-1 flex-col gap-1">
@@ -148,7 +147,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <span className="text-[15px] font-semibold tracking-[0.06em]">vetta</span>
         </Link>
         <div className="flex items-center gap-1">
-          <ThemeToggle className="h-9 w-9 border-0 bg-transparent" />
           <NotificationTrigger onClick={() => setShowNotifications(true)} unreadCount={3} />
         </div>
       </header>

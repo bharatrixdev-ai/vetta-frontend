@@ -1,36 +1,49 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 
-export function ThemeToggle({ className }: { className?: string }) {
-  const [light, setLight] = useState(false);
-
+/**
+ * Automatically syncs the app theme according to user profile preference or OS system setting (prefers-color-scheme).
+ * No manual toggle buttons are rendered as themes are handled automatically by profile / OS system defaults.
+ */
+export function ThemeSync() {
   useEffect(() => {
-    setLight(document.documentElement.classList.contains("light"));
+    // Check if user has an explicit profile theme preference stored in cookie
+    const getCookieTheme = () => {
+      const match = document.cookie.match(/(?:^|; )vetta-theme=([^;]*)/);
+      return match ? match[1] : null;
+    };
+
+    const cookieTheme = getCookieTheme();
+
+    if (cookieTheme === "light") {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    } else if (cookieTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      // Default to OS system setting
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
+      const applySystemTheme = (e: MediaQueryList | MediaQueryListEvent) => {
+        if (e.matches) {
+          document.documentElement.classList.add("light");
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.remove("light");
+          document.documentElement.classList.add("dark");
+        }
+      };
+
+      applySystemTheme(mediaQuery);
+      mediaQuery.addEventListener("change", applySystemTheme);
+      return () => mediaQuery.removeEventListener("change", applySystemTheme);
+    }
   }, []);
 
-  const toggle = () => {
-    const next = !light;
-    setLight(next);
-    document.documentElement.classList.toggle("light", next);
-    // Cookie so the server can render the right theme on the next request.
-    document.cookie = `vetta-theme=${next ? "light" : "dark"}; path=/; max-age=31536000; samesite=lax`;
-  };
+  return null;
+}
 
-  return (
-    <button
-      type="button"
-      aria-label={light ? "Switch to dark mode" : "Switch to light mode"}
-      aria-pressed={light}
-      onClick={toggle}
-      className={cn(
-        "flex h-10 w-10 items-center justify-center rounded-full border border-line bg-wash text-mute transition-all duration-200 hover:border-line-2 hover:text-ink active:scale-95",
-        className
-      )}
-    >
-      {light ? <Moon size={17} strokeWidth={1.8} /> : <Sun size={17} strokeWidth={1.8} />}
-    </button>
-  );
+export function ThemeToggle() {
+  return null;
 }

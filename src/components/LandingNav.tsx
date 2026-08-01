@@ -107,7 +107,6 @@ export function LandingNav() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <ThemeToggle className="h-9 w-9" />
               <Link href="/login" className="hidden sm:block">
                 <Button variant="ghost" className="!px-4 !py-2 !text-[13px]">
                   Log in
