@@ -21,7 +21,10 @@ import {
   Link as LinkIcon,
   Radio,
   Wifi,
-  BatteryFull
+  BatteryFull,
+  MicOff,
+  Video as VideoIcon,
+  Phone
 } from "lucide-react";
 import { Logo, VMark } from "@/components/Logo";
 import { LandingNav } from "@/components/LandingNav";
@@ -47,21 +50,20 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
   );
 }
 
-/* ───────── Vetta Discover Screen (Live Video UI) ───────── */
+/* ───────── Vetta Discover Screen (1v1 Video UI) ───────── */
 function VettaHeroPhoneSplash() {
   return (
     <div 
-      className="w-full text-white pt-2 flex flex-col justify-between min-h-[460px] sm:min-h-[500px] relative z-10"
+      className="w-full text-white pt-2 flex flex-col min-h-[460px] sm:min-h-[500px] relative z-10"
       style={{ backgroundImage: "url('/fashion_live.png')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
-      {/* Subtle overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
+      {/* Subtle top/bottom overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60" />
       
       {/* iPhone Status Bar */}
       <div className="relative z-20 flex items-center justify-between px-5 py-1 text-[11px] font-semibold text-white tracking-wider">
         <span>9:11</span>
         <div className="flex items-center gap-1.5">
-          {/* Signal Bars */}
           <div className="flex items-end gap-0.5 h-2.5">
             <div className="w-[3px] h-[3px] bg-white rounded-[1px]" />
             <div className="w-[3px] h-[5px] bg-white rounded-[1px]" />
@@ -73,56 +75,36 @@ function VettaHeroPhoneSplash() {
         </div>
       </div>
 
-      {/* Live Stream Top Header */}
-      <div className="relative z-20 flex items-center gap-3 px-4 mt-2">
-        <div className="flex items-center gap-1 rounded bg-red-500/90 px-2 py-0.5 text-[9px] font-bold text-white uppercase tracking-wider">
-          Live
+      {/* Top Header - 1:1 Session Details */}
+      <div className="relative z-20 flex items-center justify-between px-4 mt-2">
+        <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md rounded-full py-1.5 px-3 border border-white/20 shadow-lg">
+          <Avatar name="Aditi Sharma" size={24} imgUrl="/fashion.png" />
+          <div className="text-[11px] font-bold text-white tracking-tight">Aditi Sharma</div>
         </div>
-        <div className="flex items-center gap-3 text-[10px] font-semibold text-white/90 drop-shadow-md">
-          <span>3.4K views</span>
-          <span>52:14</span>
+        <div className="flex items-center gap-1.5 rounded-full bg-red-500/90 px-2.5 py-1 text-[9px] font-bold text-white shadow-lg uppercase tracking-widest">
+          <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" /> 1:1 Call
         </div>
       </div>
 
-      {/* Live Chat & Bottom UI */}
-      <div className="relative z-20 mt-auto px-4 pb-6 w-full">
-        {/* Chat Messages */}
-        <div className="flex flex-col gap-3 mb-4 max-w-[90%]">
-          <div className="flex items-start gap-2">
-            <Avatar name="Riya Sharma" size={18} />
-            <div className="text-[11.5px] leading-snug drop-shadow-md">
-              <span className="font-bold text-white/90">@riya.sharma</span> <span className="text-white">Love this outfit! ❤️🔥</span>
-            </div>
-          </div>
-          <div className="flex items-start gap-2">
-            <Avatar name="Aman Gupta" size={18} />
-            <div className="text-[11.5px] leading-snug drop-shadow-md">
-              <span className="font-bold text-white/90">@aman_gupta</span> <span className="text-white">Which brand is this kurti?</span>
-            </div>
-          </div>
-          <div className="flex items-start gap-2">
-            <Avatar name="Fashionista Priya" size={18} />
-            <div className="text-[11.5px] leading-snug drop-shadow-md">
-              <span className="font-bold text-white/90">@fashionistapriya</span> <span className="text-white">You look amazing Aditi!</span>
-            </div>
-          </div>
-          <div className="flex items-start gap-2">
-            <Avatar name="Sunny Vibes" size={18} />
-            <div className="text-[11.5px] leading-snug drop-shadow-md">
-              <span className="font-bold text-white/90">@sunny.vibes</span> <span className="text-white">Can you share the link? 😍</span>
-            </div>
-          </div>
-        </div>
+      {/* Picture in Picture (Mentee) */}
+      <div className="relative z-20 mt-4 mr-4 self-end w-20 h-28 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl bg-gradient-to-br from-slate-800 to-slate-900">
+         <div className="absolute inset-0 flex items-center justify-center">
+            <Avatar name="Mentee User" size={80} className="opacity-50 blur-sm" />
+         </div>
+         <div className="absolute inset-0 bg-black/20" />
+      </div>
 
-        {/* Comment Input Box */}
-        <div className="flex items-center gap-3 w-full">
-          <div className="flex-1 h-9 rounded-full bg-black/30 backdrop-blur-md border border-white/20 flex items-center px-4">
-            <span className="text-[11px] font-semibold text-white/70">Add a comment...</span>
-          </div>
-          <div className="h-9 w-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0">
-             <Heart size={16} fill="currentColor" className="text-white" />
-          </div>
-        </div>
+      {/* Bottom Call Controls */}
+      <div className="relative z-20 mt-auto px-4 pb-8 w-full flex items-center justify-center gap-4">
+         <div className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
+            <MicOff size={20} className="text-white" />
+         </div>
+         <div className="h-14 w-14 rounded-full bg-red-500 shadow-xl shadow-red-500/30 flex items-center justify-center cursor-pointer hover:bg-red-600 transition-colors">
+            <Phone size={24} className="text-white rotate-[135deg]" fill="currentColor" />
+         </div>
+         <div className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
+            <VideoIcon size={20} className="text-white" />
+         </div>
       </div>
     </div>
   );
