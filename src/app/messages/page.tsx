@@ -301,7 +301,7 @@ export default function Messages() {
               : "Book a Session with a Luminary and your conversation starts here."}
           </p>
           {!isLuminary && (
-            <Link href="/explore" className="mt-5 inline-block">
+            <Link href="/discover" className="mt-5 inline-block">
               <Button>
                 <Compass size={15} strokeWidth={1.9} /> Find a Luminary
               </Button>
@@ -345,7 +345,7 @@ export default function Messages() {
             Looking for someone specific? Browse verified Luminaries and book a Session to
             start talking.
           </p>
-          <Link href="/explore" className="shrink-0 text-[12px] font-semibold vgrad-text">
+          <Link href="/discover" className="shrink-0 text-[12px] font-semibold vgrad-text">
             Explore →
           </Link>
         </div>

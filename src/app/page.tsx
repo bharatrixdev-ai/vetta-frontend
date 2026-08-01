@@ -7,7 +7,6 @@ import {
   Check,
   Fingerprint,
   Lock,
-  MessageSquare,
   Mic,
   Radio,
   ShieldCheck,
@@ -24,6 +23,96 @@ import { LUMINARIES, NOTES, ROUNDTABLES, byHandle } from "@/lib/data";
 import { inr } from "@/lib/utils";
 
 const WALL = [...LUMINARIES, ...LUMINARIES];
+
+/* ───────── Mini product shots — the page shows the app instead of describing it ───────── */
+
+function MiniSession({ className = "" }: { className?: string }) {
+  return (
+    <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#233a63] via-[#2c2f55] to-[#3b2f6b] ${className}`}>
+      <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xl bg-black/35 px-2 py-1.5 text-[10px] font-medium text-white backdrop-blur">
+        <Verified size={10} /> Dr. Sarah Kim
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <Avatar name="Dr. Sarah Kim" size={64} />
+      </div>
+      <div className="absolute bottom-3 right-3 h-[44px] w-[64px] rounded-xl bg-gradient-to-br from-[#1c2b47] to-[#2a2344] ring-1 ring-white/20" />
+      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/40 px-2 py-1.5 backdrop-blur">
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/12 text-white">
+          <Mic size={11} strokeWidth={2} />
+        </span>
+        <span className="flex h-6 items-center gap-1 rounded-full vgrad px-2 text-[9.5px] font-semibold text-white">
+          <Sparkles size={10} strokeWidth={2.2} /> Intel
+        </span>
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-danger text-white">
+          <Video size={11} strokeWidth={2} />
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function MiniTable({ className = "" }: { className?: string }) {
+  return (
+    <div className={`glass-soft rounded-2xl p-3.5 ${className}`}>
+      <div className="flex items-center gap-1.5 text-[9.5px] font-bold text-danger">
+        <span className="anim-pulse-soft h-1.5 w-1.5 rounded-full bg-danger" /> LIVE · 214
+      </div>
+      <div className="mt-1.5 text-[12px] font-semibold leading-snug">
+        Raising in 2026 — what changed
+      </div>
+      <div className="mt-2.5 flex justify-center gap-2.5">
+        <div className="anim-speak rounded-full">
+          <Avatar name="Ananya Iyer" size={34} ring />
+        </div>
+        <Avatar name="James Okafor" size={34} ring />
+      </div>
+      <div className="mt-2.5 grid grid-cols-8 gap-1">
+        {Array.from({ length: 16 }).map((_, i) => (
+          <Avatar key={i} name={`M${i}`} seed={`mini${i}`} size={15} className="opacity-70" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MiniNote({ className = "" }: { className?: string }) {
+  const a = byHandle("rohan-verma")!;
+  return (
+    <div className={`glass-soft rounded-2xl p-3.5 ${className}`}>
+      <div className="flex items-center gap-2">
+        <Avatar name={a.name} size={26} />
+        <span className="flex items-center gap-1 text-[11px] font-semibold">
+          {a.short} <Verified size={10} />
+        </span>
+      </div>
+      <p className="mt-2 text-[11px] leading-relaxed text-ink/90">
+        Your first 10 engineers set the ceiling for your next 100.
+      </p>
+      <span className="mt-2.5 inline-block rounded-full vgrad px-2.5 py-1 text-[9.5px] font-bold text-white">
+        Noted. 342
+      </span>
+    </div>
+  );
+}
+
+/* Floating collage under the hero — the whole product in one glance. */
+function HeroShot() {
+  return (
+    <Reveal className="relative mx-auto mt-14 max-w-3xl px-5 md:mt-16">
+      <div aria-hidden className="pointer-events-none absolute inset-x-10 top-6 -z-10 h-56 rounded-full bg-[radial-gradient(closest-side,var(--glow-1),transparent)] blur-2xl" />
+      <div className="grid grid-cols-[1fr_1.5fr_1fr] items-center gap-3 md:gap-4">
+        <MiniTable className="lift -rotate-2" />
+        <MiniSession className="lift aspect-[4/3] shadow-2xl" />
+        <MiniNote className="lift rotate-2" />
+      </div>
+      <div className="mt-5 flex items-center justify-center gap-x-6 gap-y-1 text-[11.5px] font-medium text-faint">
+        <span>Roundtables</span>
+        <span className="text-ink">Sessions</span>
+        <span>Notes</span>
+      </div>
+    </Reveal>
+  );
+}
 
 export default function Landing() {
   return (
@@ -51,9 +140,8 @@ export default function Landing() {
           </h1>
 
           <p className="anim-fade-up delay-2 mx-auto mt-6 max-w-[34rem] text-[16px] leading-relaxed text-mute md:text-[17.5px]">
-            Vetta is the vetted network. Every profile is a verified track record —
-            book a Session, join a Roundtable, read Notes from people who&apos;ve
-            actually done it.
+            Every profile is a verified track record.
+            Book the hour. Join the room. Read the signal.
           </p>
 
           {/* claim handle */}
@@ -82,6 +170,10 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
+      <HeroShot />
+
+      <div className="h-16 md:h-20" />
 
       {/* ───────────────── Luminary wall ───────────────── */}
       <section className="relative border-y border-line py-7">
@@ -117,59 +209,49 @@ export default function Landing() {
         </p>
       </section>
 
-      {/* ───────────────── Three primitives ───────────────── */}
-      <section className="mx-auto max-w-6xl px-5 py-20 md:py-28">
+      {/* ───────────────── Three primitives — shown, not told ───────────────── */}
+      <section className="mx-auto max-w-6xl px-5 py-20 md:py-24">
         <Reveal className="mx-auto max-w-xl text-center">
           <h2 className="text-[2rem] font-semibold tracking-[-0.02em] md:text-[2.75rem]">
             Three ways in.
           </h2>
-          <p className="mt-3 text-[15px] leading-relaxed text-mute">
-            One person at a time, a room at a time, or a thought at a time.
-          </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
             {
-              Icon: Video,
               tag: "Sessions",
-              title: "One person.\nUndivided.",
-              body: "A private video call with a verified Luminary. Calm room, live AI notes, a recap you can act on.",
+              line: "Book the hour.",
               href: "#sessions",
+              shot: <MiniSession className="aspect-[16/10]" />,
             },
             {
-              Icon: Radio,
               tag: "Roundtables",
-              title: "Live audio,\nwith a head table.",
-              body: "200+ listeners around hosts who've done the thing. Raise a hand and join the table.",
+              line: "Pull up a chair.",
               href: "#roundtables",
+              shot: <MiniTable />,
             },
             {
-              Icon: MessageSquare,
               tag: "Notes",
-              title: "Signal,\nnot feed.",
-              body: "Short thoughts from verified practitioners. Tap Noted. — no hearts, no outrage bait.",
+              line: "Read the signal.",
               href: "#notes",
+              shot: <MiniNote />,
             },
           ].map((c, i) => (
             <Reveal key={c.tag} delay={i * 90}>
-              <a
-                href={c.href}
-                className="glass lift group flex h-full flex-col rounded-3xl p-6"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl vgrad text-white">
-                  <c.Icon size={20} strokeWidth={1.9} />
-                </span>
-                <div className="mt-5 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-accent">
-                  {c.tag}
+              <a href={c.href} className="glass lift group flex h-full flex-col gap-4 rounded-3xl p-4">
+                {c.shot}
+                <div className="flex items-center justify-between px-1.5 pb-1">
+                  <div>
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+                      {c.tag}
+                    </div>
+                    <div className="mt-0.5 text-[16px] font-semibold tracking-[-0.01em]">{c.line}</div>
+                  </div>
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-wash text-mute transition-all duration-200 group-hover:vgrad group-hover:text-white">
+                    <ArrowRight size={15} strokeWidth={2} />
+                  </span>
                 </div>
-                <h3 className="mt-2 whitespace-pre-line text-[22px] font-semibold leading-[1.15] tracking-[-0.015em]">
-                  {c.title}
-                </h3>
-                <p className="mt-3 flex-1 text-[14px] leading-relaxed text-mute">{c.body}</p>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-ink transition-transform duration-200 group-hover:translate-x-0.5">
-                  See how <ArrowRight size={15} strokeWidth={2} />
-                </span>
               </a>
             </Reveal>
           ))}
@@ -311,7 +393,7 @@ export default function Landing() {
               everyone else listens until they raise a hand. Free or ticketed —
               ticket-holders keep the recording and transcript.
             </p>
-            <Link href="/roundtables" className="mt-7 inline-block">
+            <Link href="/discover" className="mt-7 inline-block">
               <Button variant="ghost" className="!px-5">
                 Browse Roundtables <ArrowRight size={15} strokeWidth={2} />
               </Button>
@@ -379,8 +461,7 @@ export default function Landing() {
               Whoever you are today.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-mute">
-              The intern and the CTO are on the same platform for opposite reasons — and
-              both get a version of it built for them.
+              The intern and the CTO, for opposite reasons.
             </p>
           </Reveal>
 
@@ -393,17 +474,12 @@ export default function Landing() {
                 <h3 className="mt-3 text-[26px] font-semibold leading-[1.15] tracking-[-0.015em]">
                   Skip the cold DM.<br />Buy the hour.
                 </h3>
-                <p className="mt-3.5 text-[14px] leading-relaxed text-mute">
-                  Students, juniors, career-switchers, first-time founders. Twenty minutes
-                  with the right person beats six months of guessing — and you never have to
-                  ask a stranger for a favour again.
-                </p>
                 <ul className="mt-5 space-y-2.5">
                   {[
-                    "Free to join. Pay only for the Sessions you book.",
-                    "Free Roundtables every week — listen before you spend a rupee.",
-                    "Every credential verified, so you know who you're paying.",
-                    "Full refund until 24h before. No subscription, ever.",
+                    "Free to join — pay per Session",
+                    "Free Roundtables every week",
+                    "Every credential human-verified",
+                    "Full refund until 24h before",
                   ].map((t) => (
                     <li key={t} className="flex items-start gap-2.5 text-[13.5px] text-mute">
                       <Check size={15} strokeWidth={2.2} className="mt-0.5 shrink-0 text-ok" />
@@ -427,17 +503,12 @@ export default function Landing() {
                 <h3 className="mt-3 text-[26px] font-semibold leading-[1.15] tracking-[-0.015em]">
                   Get paid for<br />what you know.
                 </h3>
-                <p className="mt-3.5 text-[14px] leading-relaxed text-mute">
-                  Operators, doctors, founders, researchers, designers, leaders. Your inbox is
-                  already full of &ldquo;quick question?&rdquo; — turn that into a practice you
-                  control, on a platform that proves you&apos;re real.
-                </p>
                 <ul className="mt-5 space-y-2.5">
                   {[
-                    "You set your prices, formats and hours. 90% payout.",
-                    "Free or ticketed Roundtables — your call, every time.",
-                    "A 60-day rolling window so your calendar never gets held hostage.",
-                    "A private floor where Luminaries meet each other.",
+                    "Your prices, your hours — 90% payout",
+                    "Free or ticketed Roundtables",
+                    "A 60-day window guards your calendar",
+                    "A private Luminary-only floor",
                   ].map((t) => (
                     <li key={t} className="flex items-start gap-2.5 text-[13.5px] text-mute">
                       <Check size={15} strokeWidth={2.2} className="mt-0.5 shrink-0 text-violet" />
@@ -467,9 +538,7 @@ export default function Landing() {
               Proof over prose.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-mute">
-              Anyone can write &ldquo;visionary leader&rdquo; in a bio. On Vetta, a
-              human checks the artifacts — degrees, employers, exits, licenses —
-              before the badge appears.
+              A human checks every artifact before the badge appears.
             </p>
           </Reveal>
 
@@ -508,8 +577,7 @@ export default function Landing() {
               Genuine, or it&apos;s gone.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-mute">
-              Build with AI all you want — that&apos;s just modern work. But the person on the
-              other side of the call has to be a real person with a real record.
+              Build with AI. Show up as yourself.
             </p>
           </Reveal>
 
@@ -518,19 +586,19 @@ export default function Landing() {
               [
                 Fingerprint,
                 "Real humans only",
-                "One verified identity per Luminary. No synthetic personas, no deepfaked faces or voices, no borrowed credentials.",
+                "One verified identity per Luminary — no personas, no deepfakes.",
                 "ok",
               ],
               [
                 BrainCircuit,
                 "AI as a tool, not a mask",
-                "Use AI to code, research, draft and prep — encouraged. Presenting AI-generated work or people as genuinely yours is the line.",
+                "Code, research and draft with AI. Presenting it as you is the line.",
                 "accent",
               ],
               [
                 Sliders,
                 "An algorithm you set",
-                "You pick your fields at sign-up; that\u2019s what shapes your feed. No watch-time optimisation, no outrage loops, no ads bidding for your attention.",
+                "Your fields shape your feed. No watch-time tricks, no ads.",
                 "violet",
               ],
             ].map(([Icon, t, d, tone], i) => {
@@ -560,10 +628,7 @@ export default function Landing() {
               <div className="flex-1">
                 <h3 className="text-[16px] font-semibold">Nobody can slide into a Luminary&apos;s DMs</h3>
                 <p className="mt-1.5 text-[13.5px] leading-relaxed text-mute">
-                  Members can&apos;t message a Luminary directly. Book a Session and the chat
-                  opens 48 hours before it — then stays open for 7 days after. That&apos;s the
-                  whole trick: their attention stays protected, and yours is never wasted on
-                  a message that will never be read.
+                  Book a Session and chat opens 48h before — that&apos;s the only door in.
                 </p>
               </div>
             </div>

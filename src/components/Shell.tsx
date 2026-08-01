@@ -11,7 +11,6 @@ import {
   Compass,
   Home,
   MessageSquare,
-  Users,
   User,
 } from "lucide-react";
 import { RoleSwitch } from "@/components/RoleSwitch";
@@ -25,8 +24,7 @@ type IconCmp = typeof Home;
 function tabsFor(handle: string): Array<{ href: string; label: string; Icon: IconCmp }> {
   return [
     { href: "/app", label: "Home", Icon: Home },
-    { href: "/explore", label: "Explore", Icon: Compass },
-    { href: "/roundtables", label: "Tables", Icon: Users },
+    { href: "/discover", label: "Discover", Icon: Compass },
     { href: "/messages", label: "Messages", Icon: MessageSquare },
     { href: `/profile/${handle}`, label: "Profile", Icon: User },
   ];
@@ -64,7 +62,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 )}
               >
                 <Icon size={20} strokeWidth={active ? 2.1 : 1.75} />
-                {label === "Tables" ? "Roundtables" : label}
+                {label}
               </Link>
             );
           })}

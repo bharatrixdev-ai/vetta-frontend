@@ -273,3 +273,11 @@ Thread states are shared: `locked` (with countdown + queueing), `active`, `follo
 **Manifest** — `app/manifest.ts` makes it installable: standalone display, `start_url: /app`, dark theme colours, both icons.
 
 **One mark everywhere.** The original ribbon-V (filled paths — blue left stroke, lilac→violet right sweeping into the tail) is used unchanged across the app wordmark, favicon tile, Apple touch icon and share card. A bolder stroke-based variant was trialled for small-size legibility and rejected — the original reads as the brand, and that matters more than a few pixels of clarity at 16px.
+
+---
+
+## 20. Discover merge + visual-first landing (ui-ux-pro-max pass)
+
+**Navigation went from 5 tabs to 4 + create.** Explore and Roundtables merged into **Discover** (`/discover`); old routes 307-redirect so no link ever breaks. Rationale: both screens answered the same question — "who/what is worth my time right now?" — and the merged screen follows the discovery patterns dominant on Dribbble-class social apps: search first, segmented control (All · Luminaries · Roundtables), a rich LIVE hero card (gradient, avatar stack, listener wall, one Join CTA), a horizontal "Happening soon" snap strip with time/price chips, then intent chips over the people grid. Role-aware: Luminaries get "Host a table"; members get a quiet "Hosted by Luminaries" note.
+
+**Landing became show-don't-tell.** Hero copy cut to one line ("Book the hour. Join the room. Read the signal."), and a `HeroShot` collage of three real mini product mockups (MiniTable · MiniSession · MiniNote, slight rotations, shared glow) sits directly under the fold — the product explains itself before a single section of prose. "Three ways in" text cards were replaced by the same mini-mockups with 3-word captions; Two-doors paragraphs deleted (headline + 4 short checks each); Vetting/Authenticity intros cut to one sentence; the DM-rule card is now one line. Word count on the page dropped by roughly half while every section kept its visual anchor.

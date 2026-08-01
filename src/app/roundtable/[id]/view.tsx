@@ -89,7 +89,7 @@ export function RoundtableView({ id }: { id: string }) {
           <Button className="mt-5 w-full" onClick={() => setPaySheet(true)}>
             Get ticket · {inr(rt.price)}
           </Button>
-          <Link href="/roundtables" className="mt-4 inline-flex items-center gap-1.5 text-[12.5px] text-faint hover:text-mute">
+          <Link href="/discover" className="mt-4 inline-flex items-center gap-1.5 text-[12.5px] text-faint hover:text-mute">
             <ArrowLeft size={13} strokeWidth={2} /> All Roundtables
           </Link>
         </div>
@@ -109,7 +109,7 @@ export function RoundtableView({ id }: { id: string }) {
     <div className="stage-dark flex min-h-dvh flex-col bg-gradient-to-b from-[#0b0b0c] via-[#10131f] to-[#0b0b0c]">
       {/* Top bar */}
       <header className="flex items-center justify-between px-5 py-4">
-        <Link href="/roundtables" className="inline-flex items-center gap-1.5 text-[13px] text-faint hover:text-ink"><ArrowLeft size={13} strokeWidth={2} /> Leave quietly</Link>
+        <Link href="/discover" className="inline-flex items-center gap-1.5 text-[13px] text-faint hover:text-ink"><ArrowLeft size={13} strokeWidth={2} /> Leave quietly</Link>
         <div className="flex items-center gap-2 text-[12px] font-semibold">
           {rt.live ? (
             <><span className="anim-pulse-soft h-2 w-2 rounded-full bg-danger" /> LIVE</>
@@ -497,7 +497,7 @@ export function RoundtableView({ id }: { id: string }) {
           </button>
         )}
         <Link
-          href="/roundtables"
+          href="/discover"
           className="rounded-full bg-danger/90 px-4 py-2.5 text-[13px] font-semibold text-white"
         >
           Leave
