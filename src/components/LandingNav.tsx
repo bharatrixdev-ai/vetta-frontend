@@ -58,16 +58,18 @@ export function LandingNav() {
         <div className="mx-auto max-w-6xl px-4">
           <div
             className={cn(
-              "flex items-center justify-between rounded-full px-3 py-2 transition-all duration-300 md:px-4 glass-strong border border-white/15 shadow-[0_8px_30px_rgba(0,0,0,0.5)]",
-              scrolled ? "bg-black/80 backdrop-blur-2xl py-2" : "bg-black/60 backdrop-blur-xl py-2.5"
+              "flex items-center justify-between rounded-full px-4 transition-all duration-300",
+              scrolled
+                ? "bg-[#0b0b0c]/95 border border-white/15 shadow-[0_15px_40px_rgba(0,0,0,0.95)] backdrop-blur-3xl py-2"
+                : "bg-[#121629] border border-[#3E6FE8]/50 shadow-[0_10px_40px_rgba(0,0,0,0.85)] backdrop-blur-2xl py-2.5"
             )}
           >
             <div className="flex items-center gap-3 pl-1.5">
               <Link href="/" aria-label="Vetta home" className="flex items-center gap-2">
-                <Logo />
+                <Logo wordClass="!text-white" />
               </Link>
-              <span className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-[#3E6FE8]/40 bg-[#3E6FE8]/20 px-3 py-1 text-[11px] font-medium text-blue-200 backdrop-blur-md">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#4f8dff] animate-pulse" />
                 Verified Practitioner Network
               </span>
             </div>
@@ -96,7 +98,7 @@ export function LandingNav() {
                       "relative rounded-full px-3.5 py-2 text-[13.5px] font-medium transition-colors",
                       isSectionActive
                         ? "text-white font-semibold"
-                        : "text-white/75 hover:text-white"
+                        : "text-white/85 hover:text-white"
                     )}
                   >
                     {l.label}
@@ -110,7 +112,7 @@ export function LandingNav() {
 
             <div className="flex items-center gap-2">
               <Link href="/login" className="hidden sm:block">
-                <Button variant="ghost" className="!px-4 !py-2 !text-[13px] !text-white/90 hover:!text-white hover:!bg-white/10">
+                <Button variant="ghost" className="!px-4 !py-2 !text-[13px] !text-white !bg-white/10 border border-white/20 hover:!bg-white/20">
                   Log in
                 </Button>
               </Link>
@@ -122,7 +124,7 @@ export function LandingNav() {
               <button
                 aria-label={open ? "Close menu" : "Open menu"}
                 onClick={() => setOpen((v) => !v)}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-white/80 hover:text-white md:hidden"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-white/90 hover:text-white md:hidden"
               >
                 {open ? <X size={20} /> : <Menu size={20} />}
               </button>

@@ -34,7 +34,6 @@ type Visibility = "everyone" | "members" | "nobody";
 const TILES = [
   { id: "privacy", label: "Privacy", Icon: Shield },
   { id: "feed", label: "Your feed", Icon: Sliders },
-  { id: "theme", label: "Theme", Icon: Moon },
   { id: "notifications", label: "Alerts", Icon: Bell },
   { id: "payments", label: "Payments", Icon: CreditCard },
   { id: "language", label: "Language", Icon: Globe },
@@ -289,42 +288,6 @@ export default function Settings() {
               })}
             </div>
             <p className="mt-4 text-[11.5px] text-faint">{fields.length} fields active</p>
-          </div>
-        )}
-
-        {active === "theme" && (
-          <div className="p-5">
-            <SectionLabel>Theme</SectionLabel>
-            <div className="mt-3 grid grid-cols-2 gap-3">
-              {(
-                [
-                  [false, "Dark", Moon, "#0b0b0c", "#f4f5f7"],
-                  [true, "Light", Sun, "#f4f5f8", "#0f1218"],
-                ] as const
-              ).map(([val, label, Icon, bg, fg]) => (
-                <button
-                  key={label}
-                  onClick={() => toggleTheme(val)}
-                  aria-pressed={light === val}
-                  className={cn(
-                    "rounded-2xl border p-3 transition-all",
-                    light === val ? "border-accent/60 ring-1 ring-accent/30" : "border-line"
-                  )}
-                >
-                  <div
-                    className="flex h-16 items-center justify-center rounded-xl"
-                    style={{ background: bg, color: fg }}
-                  >
-                    <Icon size={20} strokeWidth={1.8} />
-                  </div>
-                  <div className="mt-2 text-[12.5px] font-semibold">{label}</div>
-                </button>
-              ))}
-            </div>
-            <p className="mt-3 text-[11.5px] text-faint">
-              Sessions and live Roundtables always stay dark — easier on the eyes on a
-              long call.
-            </p>
           </div>
         )}
 
