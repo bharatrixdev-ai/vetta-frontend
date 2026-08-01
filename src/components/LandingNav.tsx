@@ -62,28 +62,48 @@ export function LandingNav() {
               scrolled ? "glass-strong" : "border border-transparent"
             )}
           >
-            <Link href="/" aria-label="Vetta home" className="pl-1.5">
-              <Logo />
-            </Link>
+            <div className="flex items-center gap-3 pl-1.5">
+              <Link href="/" aria-label="Vetta home" className="flex items-center gap-2">
+                <Logo />
+              </Link>
+              <span className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-line bg-wash/60 px-3 py-1 text-[11px] font-medium text-mute backdrop-blur-md">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                Verified Practitioner Network
+              </span>
+            </div>
 
             <nav className="hidden items-center gap-1 md:flex" aria-label="Sections">
-              {LINKS.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  className={cn(
-                    "relative rounded-full px-3.5 py-2 text-[13.5px] font-medium transition-colors",
-                    active === l.href.slice(1)
-                      ? "text-ink"
-                      : "text-mute hover:text-ink"
-                  )}
-                >
-                  {l.label}
-                  {active === l.href.slice(1) && (
-                    <span className="absolute inset-x-3.5 -bottom-0.5 h-[2px] rounded-full vgrad" />
-                  )}
-                </a>
-              ))}
+              {LINKS.map((l) => {
+                const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                  e.preventDefault();
+                  const targetId = l.href.slice(1);
+                  const el = document.getElementById(targetId);
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  } else {
+                    window.location.href = l.href;
+                  }
+                };
+
+                return (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    onClick={handleNavClick}
+                    className={cn(
+                      "relative rounded-full px-3.5 py-2 text-[13.5px] font-medium transition-colors",
+                      active === l.href.slice(1)
+                        ? "text-ink"
+                        : "text-mute hover:text-ink"
+                    )}
+                  >
+                    {l.label}
+                    {active === l.href.slice(1) && (
+                      <span className="absolute inset-x-3.5 -bottom-0.5 h-[2px] rounded-full vgrad" />
+                    )}
+                  </a>
+                );
+              })}
             </nav>
 
             <div className="flex items-center gap-2">
@@ -94,7 +114,9 @@ export function LandingNav() {
                 </Button>
               </Link>
               <Link href="/login">
-                <Button className="!px-4 !py-2 !text-[13px]">Join Vetta</Button>
+                <Button className="!px-4 !py-2 !text-[13px] !vgrad !text-white font-semibold shadow-md">
+                  Sign up
+                </Button>
               </Link>
               <button
                 aria-label={open ? "Close menu" : "Open menu"}

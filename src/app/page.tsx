@@ -40,7 +40,7 @@ const WALL = [...LUMINARIES, ...LUMINARIES];
 
 function MiniSession({ className = "" }: { className?: string }) {
   return (
-    <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1c2b] via-[#241a30] to-[#3a1525] border border-white/10 ${className}`}>
+    <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#121626] via-[#1a1c36] to-[#251a3d] border border-white/10 ${className}`}>
       <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xl bg-black/50 px-2.5 py-1 text-[10px] font-medium text-white backdrop-blur-md">
         <Verified size={10} /> Dr. Sarah Kim
       </div>
@@ -52,10 +52,10 @@ function MiniSession({ className = "" }: { className?: string }) {
         <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-white">
           <Mic size={11} strokeWidth={2} />
         </span>
-        <span className="flex h-6 items-center gap-1 rounded-full bg-gradient-to-r from-red-500 to-rose-600 px-2 text-[9.5px] font-semibold text-white shadow-sm">
+        <span className="flex h-6 items-center gap-1 rounded-full bg-gradient-to-r from-[#3E6FE8] to-[#6E5BF0] px-2 text-[9.5px] font-semibold text-white shadow-sm">
           <Sparkles size={10} strokeWidth={2.2} /> Intel
         </span>
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-600 text-white">
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#3E6FE8] text-white">
           <Video size={11} strokeWidth={2} />
         </span>
       </div>
@@ -66,8 +66,8 @@ function MiniSession({ className = "" }: { className?: string }) {
 function MiniTable({ className = "" }: { className?: string }) {
   return (
     <div className={`glass-soft rounded-2xl p-4 border border-white/10 ${className}`}>
-      <div className="flex items-center gap-1.5 text-[9.5px] font-bold text-red-500">
-        <span className="anim-pulse-soft h-1.5 w-1.5 rounded-full bg-red-500" /> LIVE · 214
+      <div className="flex items-center gap-1.5 text-[9.5px] font-bold text-accent">
+        <span className="anim-pulse-soft h-1.5 w-1.5 rounded-full bg-accent" /> LIVE · 214
       </div>
       <div className="mt-1.5 text-[12px] font-semibold leading-snug text-white">
         Raising in 2026 — what changed
@@ -100,7 +100,7 @@ function MiniNote({ className = "" }: { className?: string }) {
       <p className="mt-2 text-[11px] leading-relaxed text-white/80">
         Your first 10 engineers set the ceiling for your next 100.
       </p>
-      <span className="mt-2.5 inline-block rounded-full bg-gradient-to-r from-red-600 to-rose-600 px-2.5 py-1 text-[9.5px] font-bold text-white shadow-xs">
+      <span className="mt-2.5 inline-block rounded-full bg-gradient-to-r from-[#3E6FE8] to-[#6E5BF0] px-2.5 py-1 text-[9.5px] font-bold text-white shadow-xs">
         Noted. 342
       </span>
     </div>
@@ -116,16 +116,16 @@ function HeroShot() {
       transition={{ duration: 0.8, delay: 0.2 }}
       className="relative mx-auto mt-14 max-w-4xl px-5 md:mt-16"
     >
-      <div aria-hidden className="pointer-events-none absolute inset-x-10 top-6 -z-10 h-64 rounded-full bg-[radial-gradient(closest-side,rgba(235,45,80,0.3),transparent)] blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-10 top-6 -z-10 h-64 rounded-full bg-[radial-gradient(closest-side,rgba(62,111,232,0.3),transparent)] blur-3xl" />
       <div className="grid grid-cols-[1fr_1.5fr_1fr] items-center gap-3 md:gap-4">
         <MiniTable className="lift -rotate-2 shadow-2xl" />
-        <MiniSession className="lift aspect-[4/3] shadow-[0_20px_50px_rgba(235,45,80,0.2)]" />
+        <MiniSession className="lift aspect-[4/3] shadow-[0_20px_50px_rgba(110,91,240,0.25)]" />
         <MiniNote className="lift rotate-2 shadow-2xl" />
       </div>
       <div className="mt-6 flex items-center justify-center gap-x-8 text-[12px] font-medium text-mute tracking-wide">
-        <span className="transition-colors hover:text-white">Roundtables</span>
-        <span className="font-semibold text-white">Sessions</span>
-        <span className="transition-colors hover:text-white">Notes</span>
+        <a href="#roundtables" className="transition-colors hover:text-white">Roundtables</a>
+        <a href="#sessions" className="font-semibold text-white">Sessions</a>
+        <a href="#notes" className="transition-colors hover:text-white">Notes</a>
       </div>
     </motion.div>
   );
@@ -133,15 +133,15 @@ function HeroShot() {
 
 export default function Landing() {
   return (
-    <div className="min-h-dvh overflow-x-clip bg-[#0b0b0c] text-white selection:bg-red-500/30 font-sans">
+    <div className="min-h-dvh overflow-x-clip bg-[#0b0b0c] text-white selection:bg-[#3E6FE8]/30 font-sans">
       <LandingNav />
 
-      {/* ───────────────── Hero Section (Redo Media Editorial Style) ───────────────── */}
+      {/* ───────────────── Hero Section (Matching Vetta Logo Gradient) ───────────────── */}
       <section className="relative px-5 pb-20 pt-32 md:pb-32 md:pt-44">
         {/* Ambient Glowing Orbs */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-1/2 top-[-10rem] h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(235,45,80,0.28)_0%,rgba(150,20,45,0.08)_60%,transparent_80%)] blur-3xl" />
-          <div className="absolute right-[-10rem] top-[-4rem] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(225,29,72,0.2)_0%,transparent_70%)] blur-3xl" />
+          <div className="absolute left-1/2 top-[-10rem] h-[38rem] w-[38rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(62,111,232,0.28)_0%,rgba(110,91,240,0.12)_60%,transparent_80%)] blur-3xl" />
+          <div className="absolute right-[-10rem] top-[-4rem] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(110,91,240,0.2)_0%,transparent_70%)] blur-3xl" />
         </div>
 
         <div className="relative mx-auto max-w-4xl text-center">
@@ -154,7 +154,7 @@ export default function Landing() {
           >
             Meet the people
             <br />
-            <span className="bg-gradient-to-r from-white via-rose-200 to-red-400 bg-clip-text text-transparent italic font-serif font-normal">
+            <span className="bg-gradient-to-r from-white via-blue-200 to-indigo-300 bg-clip-text text-transparent italic font-serif font-normal">
               worth meeting.
             </span>
           </motion.h1>
@@ -182,7 +182,7 @@ export default function Landing() {
               className="min-w-0 flex-1 bg-transparent text-[14px] text-white outline-none placeholder:text-white/30"
             />
             <Link href="/login">
-              <Button className="!px-5 !py-2.5 whitespace-nowrap !text-[13px] !bg-gradient-to-r !from-red-600 !to-rose-600 hover:!from-red-500 hover:!to-rose-500 !text-white font-semibold shadow-lg shadow-red-900/30">
+              <Button className="!px-5 !py-2.5 whitespace-nowrap !text-[13px] !bg-gradient-to-r !from-[#3E6FE8] !to-[#6E5BF0] hover:!from-[#3361d6] hover:!to-[#5d4be0] !text-white font-semibold shadow-lg shadow-indigo-900/40">
                 Claim handle <ArrowRight size={14} className="ml-1" />
               </Button>
             </Link>
@@ -196,13 +196,13 @@ export default function Landing() {
             className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] text-white/50"
           >
             <span className="inline-flex items-center gap-1.5">
-              <ShieldCheck size={14} className="text-red-400" /> Verified Practitioner Track Records
+              <ShieldCheck size={14} className="text-accent" /> Verified Practitioner Track Records
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Sliders size={14} className="text-rose-400" /> Algorithmic Feed Control
+              <Sliders size={14} className="text-violet" /> Algorithmic Feed Control
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <CalendarClock size={14} className="text-red-400" /> Direct 1:1 Calendar Access
+              <CalendarClock size={14} className="text-accent" /> Direct 1:1 Calendar Access
             </span>
           </motion.div>
         </div>
@@ -210,19 +210,19 @@ export default function Landing() {
 
       <HeroShot />
 
-      {/* ───────────────── Hero Editorial Banner (Inspired by Screen 2) ───────────────── */}
+      {/* ───────────────── Hero Editorial Banner ───────────────── */}
       <section className="mx-auto max-w-6xl px-5 pt-24 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-b from-[#1c080d] via-[#120609] to-[#0b0b0c] p-8 md:p-16 shadow-[0_30px_80px_rgba(235,45,80,0.15)]"
+          className="relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-b from-[#12172a] via-[#101426] to-[#0b0b0c] p-8 md:p-16 shadow-[0_30px_80px_rgba(62,111,232,0.18)]"
         >
-          <div aria-hidden className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-red-600/10 to-transparent pointer-events-none" />
+          <div aria-hidden className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#6E5BF0]/15 to-transparent pointer-events-none" />
           <div className="relative z-10 grid gap-8 md:grid-cols-2 md:items-center">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3.5 py-1 text-[11.5px] font-semibold text-red-400 uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1 text-[11.5px] font-semibold text-accent uppercase tracking-widest">
                 <Sparkles size={12} /> Exclusively Vetted
               </div>
               <h2 className="mt-6 text-[2.25rem] font-serif font-normal italic leading-[1.1] text-white md:text-[3.5rem]">
@@ -261,7 +261,7 @@ export default function Landing() {
                     <div className="text-[10.5px] text-white/60">Managing Partner · Apex Ventures</div>
                   </div>
                 </div>
-                <span className="rounded-full bg-red-600/30 border border-red-500/40 px-2.5 py-1 text-[10.5px] font-semibold text-red-300">
+                <span className="rounded-full bg-[#3E6FE8]/30 border border-[#3E6FE8]/40 px-2.5 py-1 text-[10.5px] font-semibold text-blue-200">
                   Live Session
                 </span>
               </div>
@@ -270,7 +270,7 @@ export default function Landing() {
         </motion.div>
       </section>
 
-      {/* ───────────────── Value Proposition Cards Section (Inspired by Screen 1) ───────────────── */}
+      {/* ───────────────── Value Proposition Cards Section (Vetta Logo Gradient) ───────────────── */}
       <section className="mx-auto max-w-6xl px-5 py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -278,15 +278,15 @@ export default function Landing() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="text-[12px] font-semibold uppercase tracking-[0.2em] text-red-400">
+          <div className="text-[12px] font-semibold uppercase tracking-[0.2em] text-accent">
             Value Proposition
           </div>
           <h2 className="mt-3 text-[2.25rem] font-bold tracking-tight md:text-[3.25rem]">
-            Where are you <span className="font-serif italic font-normal text-rose-300">in your journey?</span>
+            Where are you <span className="font-serif italic font-normal text-indigo-300">in your journey?</span>
           </h2>
         </motion.div>
 
-        {/* 3 High-Impact Cards (Screen 1 Reproduction) */}
+        {/* 3 Cards matching Logo Palette */}
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {/* Card 1: White/Silver Zero to One */}
           <motion.div
@@ -313,26 +313,26 @@ export default function Landing() {
             </div>
           </motion.div>
 
-          {/* Card 2: Crimson Red Scaling from One to N */}
+          {/* Card 2: Logo Gradient (Electric Blue to Indigo Lilac) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="group relative flex flex-col justify-between rounded-3xl bg-gradient-to-b from-red-600 via-rose-700 to-red-900 p-8 text-white shadow-2xl shadow-red-900/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(225,29,72,0.4)] ring-1 ring-red-400/40"
+            className="group relative flex flex-col justify-between rounded-3xl bg-gradient-to-b from-[#3E6FE8] via-[#524be0] to-[#6E5BF0] p-8 text-white shadow-2xl shadow-indigo-900/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(110,91,240,0.4)] ring-1 ring-white/20"
           >
             <div>
-              <div className="text-[12px] font-bold tracking-wider text-rose-200 uppercase">02</div>
+              <div className="text-[12px] font-bold tracking-wider text-blue-100 uppercase">02</div>
               <h3 className="mt-6 text-[28px] font-semibold leading-tight tracking-tight">
                 Scaling from <br />One to N
               </h3>
-              <p className="mt-4 text-[13.5px] leading-relaxed text-rose-100">
+              <p className="mt-4 text-[13.5px] leading-relaxed text-blue-50">
                 If you have achieved Product-Market Fit and need to scale your team, engineering architecture, and revenue to new heights.
               </p>
             </div>
-            <div className="mt-8 flex items-center justify-between border-t border-rose-500/40 pt-5">
+            <div className="mt-8 flex items-center justify-between border-t border-white/20 pt-5">
               <span className="text-[12px] font-bold text-white">Growth & Scaleups</span>
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-red-700 transition-transform group-hover:translate-x-1">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-indigo-900 transition-transform group-hover:translate-x-1">
                 <ChevronRight size={16} />
               </span>
             </div>
@@ -365,7 +365,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ───────────────── Brand Wall & Logo Matrix (Screen 3 Inspired) ───────────────── */}
+      {/* ───────────────── Brand Wall & Logo Matrix ───────────────── */}
       <section className="relative border-y border-white/10 bg-white/[0.01] py-12 overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 z-10 w-28 bg-gradient-to-r from-[#0b0b0c] to-transparent" />
         <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 z-10 w-28 bg-gradient-to-l from-[#0b0b0c] to-transparent" />
@@ -446,18 +446,18 @@ export default function Landing() {
             >
               <a
                 href={c.href}
-                className="group flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-red-500/40 hover:bg-white/[0.04]"
+                className="group flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-accent/40 hover:bg-white/[0.04]"
               >
                 {c.shot}
                 <div className="mt-6 flex items-center justify-between px-1">
                   <div>
-                    <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-red-400">
+                    <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-accent">
                       {c.tag}
                     </div>
                     <div className="mt-1 text-[17px] font-semibold text-white">{c.line}</div>
                     <div className="mt-1 text-[12px] text-white/50">{c.desc}</div>
                   </div>
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-200 group-hover:bg-red-600 group-hover:border-red-600">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-200 group-hover:bg-[#3E6FE8] group-hover:border-[#3E6FE8]">
                     <ArrowRight size={16} />
                   </span>
                 </div>
@@ -476,12 +476,12 @@ export default function Landing() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-red-400">
+            <div className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-accent">
               Sessions
             </div>
             <h2 className="mt-3 text-[2.25rem] font-bold leading-[1.1] tracking-tight md:text-[3rem]">
               The call you wish <br />
-              <span className="font-serif italic font-normal text-rose-300">you had earlier.</span>
+              <span className="font-serif italic font-normal text-indigo-300">you had earlier.</span>
             </h2>
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/70">
               Book time with someone whose track record is verified. Async chat unlocks 48 hours before the call, ensuring you start with full context.
@@ -495,7 +495,7 @@ export default function Landing() {
                 const I = Icon as typeof Sparkles;
                 return (
                   <li key={t as string} className="flex gap-4">
-                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-400">
+                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
                       <I size={17} />
                     </span>
                     <div>
@@ -514,9 +514,9 @@ export default function Landing() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="rounded-[32px] border border-white/10 bg-gradient-to-b from-[#181a26] to-[#0e1017] p-5 shadow-2xl"
+            className="rounded-[32px] border border-white/10 bg-gradient-to-b from-[#141828] to-[#0e1017] p-5 shadow-2xl"
           >
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a2336] via-[#2a1d35] to-[#3a1826] pb-[66%] border border-white/10">
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#18233a] via-[#1c1c38] to-[#2b1836] pb-[66%] border border-white/10">
               <img
                 src={EDITORIAL_CARD_1}
                 alt="Dr Sarah Kim"
@@ -541,14 +541,14 @@ export default function Landing() {
                     <I size={16} />
                   </span>
                 ))}
-                <span className="flex h-9 items-center gap-1.5 rounded-full bg-gradient-to-r from-red-600 to-rose-600 px-3.5 text-[12px] font-semibold text-white shadow-md">
+                <span className="flex h-9 items-center gap-1.5 rounded-full bg-gradient-to-r from-[#3E6FE8] to-[#6E5BF0] px-3.5 text-[12px] font-semibold text-white shadow-md">
                   <Sparkles size={14} /> Intelligence
                 </span>
               </div>
             </div>
             <div className="flex items-center justify-between px-3 pt-5 pb-1">
               <span className="text-[13.5px] text-white/60">Deep Dive Strategy · 50 min</span>
-              <span className="text-[13.5px] font-semibold text-rose-400">
+              <span className="text-[13.5px] font-semibold text-accent">
                 22 min remaining
               </span>
             </div>
@@ -565,9 +565,9 @@ export default function Landing() {
             viewport={{ once: true }}
             className="order-2 md:order-1"
           >
-            <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-[#18101a] to-[#0e0b12] p-7 shadow-2xl">
-              <div className="flex items-center gap-2 text-[11.5px] font-bold text-red-500">
-                <span className="anim-pulse-soft h-2 w-2 rounded-full bg-red-500" />
+            <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-[#141628] to-[#0e0b14] p-7 shadow-2xl">
+              <div className="flex items-center gap-2 text-[11.5px] font-bold text-accent">
+                <span className="anim-pulse-soft h-2 w-2 rounded-full bg-accent" />
                 LIVE NOW · {ROUNDTABLES[0].listeners} listening
               </div>
               <div className="mt-3 text-[19px] font-semibold leading-snug text-white">
@@ -585,7 +585,7 @@ export default function Landing() {
                 ))}
                 <div className="ml-auto text-right text-[11.5px] text-white/50">
                   Head Table
-                  <div className="mt-0.5 flex items-center justify-end gap-1 text-red-400 font-medium">
+                  <div className="mt-0.5 flex items-center justify-end gap-1 text-accent font-medium">
                     <Mic size={12} /> Speaking
                   </div>
                 </div>
@@ -604,12 +604,12 @@ export default function Landing() {
             viewport={{ once: true }}
             className="order-1 md:order-2"
           >
-            <div className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-rose-400">
+            <div className="text-[11.5px] font-bold uppercase tracking-[0.18em] text-violet">
               Roundtables
             </div>
             <h2 className="mt-3 text-[2.25rem] font-bold leading-[1.1] tracking-tight md:text-[3rem]">
               Rooms with a <br />
-              <span className="font-serif italic font-normal text-rose-300">head table.</span>
+              <span className="font-serif italic font-normal text-indigo-300">head table.</span>
             </h2>
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/70">
               Not a podcast broadcast, not a chaotic chat room. Hosts sit at the head table while attendees listen and raise hands for interactive discussion.
@@ -626,7 +626,7 @@ export default function Landing() {
       {/* ───────────────── Call to Action Footer ───────────────── */}
       <section className="relative overflow-hidden border-t border-white/10 px-5 py-24 text-center md:py-36">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(235,45,80,0.25)_0%,transparent_70%)] blur-3xl opacity-60" />
+          <div className="absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(62,111,232,0.25)_0%,transparent_70%)] blur-3xl opacity-60" />
         </div>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -639,11 +639,11 @@ export default function Landing() {
           <h2 className="mt-6 text-[2.5rem] font-bold leading-[1.1] tracking-tight md:text-[4rem]">
             The people you look up to
             <br />
-            are <span className="font-serif italic font-normal bg-gradient-to-r from-white via-rose-200 to-red-400 bg-clip-text text-transparent">one Session away.</span>
+            are <span className="font-serif italic font-normal bg-gradient-to-r from-white via-blue-200 to-violet-300 bg-clip-text text-transparent">one Session away.</span>
           </h2>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link href="/login">
-              <Button className="!bg-gradient-to-r !from-red-600 !to-rose-600 hover:!from-red-500 hover:!to-rose-500 !text-white !px-8 !py-4 !text-[15px] font-semibold shadow-xl shadow-red-900/30">
+              <Button className="!bg-gradient-to-r !from-[#3E6FE8] !to-[#6E5BF0] hover:!from-[#3361d6] hover:!to-[#5d4be0] !text-white !px-8 !py-4 !text-[15px] font-semibold shadow-xl shadow-indigo-900/40">
                 Find your person <ArrowRight size={16} className="ml-2" />
               </Button>
             </Link>

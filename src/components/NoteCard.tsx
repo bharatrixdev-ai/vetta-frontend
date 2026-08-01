@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Bookmark, BookmarkCheck, MessageCircle, Send } from "lucide-react";
+import { MessageCircle, Send } from "lucide-react";
 import { Avatar } from "@/components/Avatar";
 import { Verified } from "@/components/ui";
 import { byHandle, type Note } from "@/lib/data";
@@ -22,7 +22,6 @@ export function NoteCard({ note, delay }: { note: Note; delay?: number }) {
   const author = byHandle(note.author);
   const { me } = useRole();
   const [noted, setNoted] = useState(false);
-  const [saved, setSaved] = useState(false);
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const [replies, setReplies] = useState<Reply[]>(SEED_REPLIES[note.id] ?? []);
@@ -85,21 +84,6 @@ export function NoteCard({ note, delay }: { note: Note; delay?: number }) {
             >
               <MessageCircle size={13} strokeWidth={2} />
               {note.replies + replies.filter((r) => r.mine).length}
-            </button>
-            <button
-              onClick={() => setSaved((v) => !v)}
-              aria-pressed={saved}
-              aria-label={saved ? "Saved" : "Save Note"}
-              className={cn(
-                "rounded-full p-2 transition-colors hover:bg-wash",
-                saved ? "text-accent" : "text-mute hover:text-ink"
-              )}
-            >
-              {saved ? (
-                <BookmarkCheck size={14} strokeWidth={2} />
-              ) : (
-                <Bookmark size={14} strokeWidth={2} />
-              )}
             </button>
             <div className="flex-1" />
             <Link
