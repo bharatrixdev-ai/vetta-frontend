@@ -19,7 +19,9 @@ import {
   MessageCircle,
   Send,
   Link as LinkIcon,
-  Radio
+  Radio,
+  Wifi,
+  BatteryFull
 } from "lucide-react";
 import { Logo, VMark } from "@/components/Logo";
 import { LandingNav } from "@/components/LandingNav";
@@ -45,33 +47,82 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
   );
 }
 
-/* ───────── Vetta Discover Screen (Dark app UI) ───────── */
+/* ───────── Vetta Discover Screen (Live Video UI) ───────── */
 function VettaHeroPhoneSplash() {
   return (
     <div 
-      className="w-full text-white p-4 sm:p-5 pt-10 flex flex-col justify-between min-h-[460px] relative z-10"
+      className="w-full text-white pt-2 flex flex-col justify-between min-h-[460px] sm:min-h-[500px] relative z-10"
       style={{ backgroundImage: "url('/fashion_live.png')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
-      <div className="absolute inset-0 bg-black/20" />
+      {/* Subtle overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
       
-      <div className="relative z-10 flex items-center justify-between">
+      {/* iPhone Status Bar */}
+      <div className="relative z-20 flex items-center justify-between px-5 py-1 text-[11px] font-semibold text-white tracking-wider">
+        <span>9:11</span>
         <div className="flex items-center gap-1.5">
-          <VMark className="!h-5 !w-5" />
-          <span className="text-[12px] font-bold tracking-tight drop-shadow-md">VETTA</span>
-        </div>
-        <div className="flex items-center gap-1 rounded-full bg-red-500/90 px-2.5 py-1 text-[10px] font-bold text-white shadow-lg">
-          <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" /> Live
+          {/* Signal Bars */}
+          <div className="flex items-end gap-0.5 h-2.5">
+            <div className="w-[3px] h-[3px] bg-white rounded-[1px]" />
+            <div className="w-[3px] h-[5px] bg-white rounded-[1px]" />
+            <div className="w-[3px] h-[7px] bg-white rounded-[1px]" />
+            <div className="w-[3px] h-[10px] bg-white rounded-[1px]" />
+          </div>
+          <Wifi size={12} strokeWidth={2.5} />
+          <BatteryFull size={16} strokeWidth={1.5} className="rotate-90 translate-y-[1px]" />
         </div>
       </div>
 
-      <div className="relative z-10 flex items-center justify-center mt-auto pb-6">
-         <div className="flex items-center gap-3 bg-black/40 backdrop-blur-md rounded-full py-2 px-4 border border-white/20 shadow-2xl">
-           <Avatar name="Aditi Sharma" size={32} imgUrl="/fashion.png" />
-           <div className="text-left pr-2">
-             <div className="text-[13px] font-bold leading-none text-white">Aditi Sharma <Verified size={12} className="inline-block text-blue-400" /></div>
-             <div className="text-[10px] text-white/80 mt-1">Creative Director</div>
-           </div>
-         </div>
+      {/* Live Stream Top Header */}
+      <div className="relative z-20 flex items-center gap-3 px-4 mt-2">
+        <div className="flex items-center gap-1 rounded bg-red-500/90 px-2 py-0.5 text-[9px] font-bold text-white uppercase tracking-wider">
+          Live
+        </div>
+        <div className="flex items-center gap-3 text-[10px] font-semibold text-white/90 drop-shadow-md">
+          <span>3.4K views</span>
+          <span>52:14</span>
+        </div>
+      </div>
+
+      {/* Live Chat & Bottom UI */}
+      <div className="relative z-20 mt-auto px-4 pb-6 w-full">
+        {/* Chat Messages */}
+        <div className="flex flex-col gap-3 mb-4 max-w-[90%]">
+          <div className="flex items-start gap-2">
+            <Avatar name="Riya Sharma" size={18} />
+            <div className="text-[11.5px] leading-snug drop-shadow-md">
+              <span className="font-bold text-white/90">@riya.sharma</span> <span className="text-white">Love this outfit! ❤️🔥</span>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <Avatar name="Aman Gupta" size={18} />
+            <div className="text-[11.5px] leading-snug drop-shadow-md">
+              <span className="font-bold text-white/90">@aman_gupta</span> <span className="text-white">Which brand is this kurti?</span>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <Avatar name="Fashionista Priya" size={18} />
+            <div className="text-[11.5px] leading-snug drop-shadow-md">
+              <span className="font-bold text-white/90">@fashionistapriya</span> <span className="text-white">You look amazing Aditi!</span>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <Avatar name="Sunny Vibes" size={18} />
+            <div className="text-[11.5px] leading-snug drop-shadow-md">
+              <span className="font-bold text-white/90">@sunny.vibes</span> <span className="text-white">Can you share the link? 😍</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Comment Input Box */}
+        <div className="flex items-center gap-3 w-full">
+          <div className="flex-1 h-9 rounded-full bg-black/30 backdrop-blur-md border border-white/20 flex items-center px-4">
+            <span className="text-[11px] font-semibold text-white/70">Add a comment...</span>
+          </div>
+          <div className="h-9 w-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0">
+             <Heart size={16} fill="currentColor" className="text-white" />
+          </div>
+        </div>
       </div>
     </div>
   );
