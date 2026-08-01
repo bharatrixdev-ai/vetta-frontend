@@ -94,7 +94,7 @@ html.light {
   }
 }
 
-@theme inline {
+@theme {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-elev: var(--elev);
