@@ -6,12 +6,14 @@ export function Avatar({
   size = 40,
   className,
   ring,
+  imgUrl,
 }: {
   name: string;
   seed?: string;
   size?: number;
   className?: string;
   ring?: boolean;
+  imgUrl?: string;
 }) {
   const [a, b] = hueFor(seed ?? name);
   return (
@@ -26,11 +28,20 @@ export function Avatar({
         width: size,
         height: size,
         fontSize: Math.max(10, size * 0.34),
-        backgroundImage: `linear-gradient(135deg, ${a}, ${b})`,
+        backgroundImage: imgUrl ? "none" : `linear-gradient(135deg, ${a}, ${b})`,
       }}
       aria-hidden
     >
-      {initials(name)}
+      {imgUrl ? (
+        <img
+          src={imgUrl}
+          alt={name}
+          className="h-full w-full rounded-full object-cover"
+          draggable={false}
+        />
+      ) : (
+        initials(name)
+      )}
     </div>
   );
 }

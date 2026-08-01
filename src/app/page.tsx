@@ -48,43 +48,30 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
 /* ───────── Vetta Discover Screen (Dark app UI) ───────── */
 function VettaHeroPhoneSplash() {
   return (
-    <div className="w-full text-white p-4 sm:p-5 pt-10 flex flex-col justify-between min-h-[460px] relative z-10">
-      <div className="flex items-center justify-between">
+    <div 
+      className="w-full text-white p-4 sm:p-5 pt-10 flex flex-col justify-between min-h-[460px] relative z-10"
+      style={{ backgroundImage: "url('/fashion_live.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+    >
+      <div className="absolute inset-0 bg-black/20" />
+      
+      <div className="relative z-10 flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           <VMark className="!h-5 !w-5" />
-          <span className="text-[12px] font-bold tracking-tight">VETTA</span>
+          <span className="text-[12px] font-bold tracking-tight drop-shadow-md">VETTA</span>
         </div>
-      </div>
-
-      <div className="mt-8 relative w-full h-[220px] rounded-2xl bg-gradient-to-b from-indigo-500/20 to-purple-500/10 border border-white/10 overflow-hidden flex flex-col justify-end p-4">
-        {/* Placeholder hero image inside phone */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/30 to-blue-500/20" />
-        <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-red-500/90 px-2 py-0.5 text-[9px] font-bold text-white">
+        <div className="flex items-center gap-1 rounded-full bg-red-500/90 px-2.5 py-1 text-[10px] font-bold text-white shadow-lg">
           <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" /> Live
         </div>
-        
-        <div className="relative z-10 flex items-center gap-3">
-          <Avatar name="Aaditya Deshmukh" size={40} ring />
-          <div>
-            <div className="text-[14px] font-bold">Aaditya D. <Verified size={10} className="inline-block" /></div>
-            <div className="text-[10px] text-white/70">UPSC AIR 4</div>
-          </div>
-        </div>
       </div>
 
-      <div className="mt-6 space-y-2">
-        <div className="flex items-center gap-3 rounded-xl bg-white/[0.08] p-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-300">
-             A
-          </div>
-          <div className="flex-1 h-2.5 bg-white/20 rounded-full" />
-        </div>
-        <div className="flex items-center gap-3 rounded-xl bg-white/[0.08] p-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-500/20 text-amber-300">
-             B
-          </div>
-          <div className="flex-1 h-2.5 bg-white/20 rounded-full w-3/4" />
-        </div>
+      <div className="relative z-10 flex items-center justify-center mt-auto pb-6">
+         <div className="flex items-center gap-3 bg-black/40 backdrop-blur-md rounded-full py-2 px-4 border border-white/20 shadow-2xl">
+           <Avatar name="Aditi Sharma" size={32} imgUrl="/fashion.png" />
+           <div className="text-left pr-2">
+             <div className="text-[13px] font-bold leading-none text-white">Aditi Sharma <Verified size={12} className="inline-block text-blue-400" /></div>
+             <div className="text-[10px] text-white/80 mt-1">Creative Director</div>
+           </div>
+         </div>
       </div>
     </div>
   );
@@ -184,7 +171,7 @@ export default function Landing() {
           {/* Left Bottom White Pill (Share link style) */}
           <FloatingBadge className="left-[12%] bottom-[20%] hidden lg:block" delay={0.6} x={-20}>
             <div className="flex items-center gap-3 rounded-full bg-white p-2.5 pr-6 shadow-xl border border-slate-100">
-              <Avatar name="Dr. Sarah Kim" size={40} />
+              <Avatar name="Aditi Sharma" size={40} imgUrl="/fashion.png" />
               <div>
                 <div className="text-[12px] font-bold leading-tight">Share mentor<br />booking link</div>
                 <div className="mt-1 inline-flex items-center gap-1 rounded bg-[#111111] px-2 py-0.5 text-[9px] font-bold text-white">
@@ -198,10 +185,10 @@ export default function Landing() {
           <FloatingBadge className="right-[5%] top-[15%] hidden lg:block" delay={0.6} x={30}>
             <div className="w-[160px] rounded-3xl bg-white p-3 shadow-2xl border border-slate-100 text-[#111111]">
               <div className="h-32 w-full rounded-2xl bg-[#e6ddff] flex items-center justify-center overflow-hidden relative">
-                 <Avatar name="Priya Sharma" size={80} className="translate-y-4" />
+                 <Avatar name="Kriti Verma" size={80} className="translate-y-4" />
               </div>
               <div className="mt-3 px-1 pb-1">
-                <div className="text-[12px] font-bold">UPSC Mentors</div>
+                <div className="text-[12px] font-bold">Style Creators</div>
                 <div className="text-[11px] font-bold text-slate-500 mt-0.5">from ₹1500</div>
               </div>
             </div>
@@ -272,7 +259,7 @@ export default function Landing() {
              {/* Large Video Mockup Card */}
              <div className="w-full max-w-[340px] rounded-[32px] overflow-hidden shadow-2xl relative bg-white lg:ml-20 mt-8 lg:mt-0">
                <div className="h-[280px] bg-gradient-to-br from-indigo-500 to-purple-700 relative flex items-center justify-center">
-                 <Avatar name="Dr. Sarah Kim" size={100} className="border-4 border-white shadow-xl" />
+                 <Avatar name="Aditi Sharma" size={100} className="border-4 border-white shadow-xl" imgUrl="/fashion.png" />
                  <div className="absolute inset-0 flex items-center justify-center">
                     <div className="h-14 w-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer hover:bg-white/30 transition-colors">
                       <Play size={24} fill="currentColor" className="ml-1" />
@@ -281,8 +268,8 @@ export default function Landing() {
                </div>
                <div className="p-5 flex items-center justify-between">
                  <div>
-                   <div className="font-extrabold text-[16px]">Dr. Sarah Kim</div>
-                   <div className="text-[12px] font-bold text-slate-500">1:1 Deep Dive</div>
+                   <div className="font-extrabold text-[16px]">Aditi Sharma</div>
+                   <div className="text-[12px] font-bold text-slate-500">Brand Strategy Call</div>
                  </div>
                  <div className="rounded-full bg-[#111111] px-4 py-2 text-[12px] font-bold text-white">Book Call</div>
                </div>
@@ -297,7 +284,7 @@ export default function Landing() {
               Direct Video<br />Advisory
             </h3>
             <p className="mt-4 text-[15px] sm:text-[16px] font-bold text-slate-700 leading-relaxed max-w-sm">
-              Connect 1:1 with verified UPSC/GATE toppers, master tutors, and engineering CTOs. Ask exactly what you need to scale faster.
+              Connect 1:1 with verified fashion designers, brand strategists, and top creative directors. Ask exactly what you need to scale your label.
             </p>
             <div className="mt-8">
               <button className="rounded-full bg-[#111111] px-6 py-3 text-[14px] font-bold text-white shadow-md hover:scale-105 transition-transform">
@@ -338,15 +325,15 @@ export default function Landing() {
                  </div>
                  <div>
                    <div className="text-[14px] font-extrabold text-slate-400 uppercase tracking-widest">Live Room</div>
-                   <div className="text-[18px] font-extrabold mt-1">Cracking CSE Mains</div>
+                   <div className="text-[18px] font-extrabold mt-1">Building a D2C Brand</div>
                  </div>
                </div>
                
                <div className="mt-6 bg-[#f8f9fa] rounded-2xl p-4">
                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-3">Head Table</div>
                  <div className="flex items-center gap-3">
-                   <Avatar name="Aaditya Deshmukh" size={48} ring />
-                   <Avatar name="Priya Sharma" size={48} ring />
+                   <Avatar name="Aditi Sharma" size={48} ring imgUrl="/fashion.png" />
+                   <Avatar name="Tanya Gujral" size={48} ring />
                  </div>
                </div>
 
@@ -368,15 +355,15 @@ export default function Landing() {
              {/* Notes Card Mockup */}
              <div className="w-full max-w-[340px] rounded-[32px] bg-white overflow-hidden shadow-2xl relative">
                <div className="h-[200px] bg-gradient-to-br from-amber-400 to-orange-500 p-6 flex flex-col justify-end">
-                 <h4 className="text-white text-[24px] font-extrabold leading-tight">14-Hour Revision Strategy</h4>
+                 <h4 className="text-white text-[24px] font-extrabold leading-tight">Growing to 100k Followers</h4>
                </div>
                <div className="p-6">
                  <div className="flex items-center gap-3 mb-4">
-                   <Avatar name="Aaditya Deshmukh" size={32} />
-                   <span className="text-[14px] font-bold">Aaditya D. <Verified size={14} className="inline-block text-blue-500" /></span>
+                   <Avatar name="Aditi Sharma" size={32} imgUrl="/fashion.png" />
+                   <span className="text-[14px] font-bold">Aditi Sharma <Verified size={14} className="inline-block text-blue-500" /></span>
                  </div>
                  <p className="text-[13px] font-bold text-slate-500 leading-relaxed mb-6">
-                   Active recall, space repetition, and note condensation that secured a top 5 rank...
+                   Organic growth hacks, content aesthetic planning, and monetization tips for new creators...
                  </p>
                  <button className="w-full rounded-full bg-[#111111] py-3 text-[13px] font-bold text-white shadow-md">
                    Read Full Note
@@ -399,7 +386,7 @@ export default function Landing() {
               Read the signal,<br />ignore the noise.
             </h3>
             <p className="mt-4 text-[15px] sm:text-[16px] font-bold text-slate-700 leading-relaxed max-w-sm">
-              Concise, practitioner-written insights from toppers and leaders sharing battle-tested frameworks.
+              Concise, practitioner-written insights from top creators and leaders sharing battle-tested frameworks.
             </p>
             <div className="mt-8">
               <button className="rounded-full bg-[#111111] px-6 py-3 text-[14px] font-bold text-white shadow-md hover:scale-105 transition-transform">
@@ -482,11 +469,11 @@ export default function Landing() {
             <div className="flex-1 flex flex-col justify-center">
               <h4 className="text-[18px] font-bold text-[#111111] mb-2">"Structured, verified, and exactly what I needed."</h4>
               <p className="text-[14px] font-bold text-slate-500 leading-relaxed mb-6">
-                "Great platform! Prompt pre-session agenda tools helped me customize the focus of the call. I solved my blockers in 50 minutes flat. Thank you!"
+                "Great platform! Prompt pre-session agenda tools helped me customize the focus of the call. I solved my brand strategy blockers in 50 minutes flat. Thank you!"
               </p>
               <div>
                 <div className="font-extrabold text-[14px]">Rahul S.</div>
-                <div className="text-[11px] font-bold text-slate-400 uppercase">UPSC Aspirant</div>
+                <div className="text-[11px] font-bold text-slate-400 uppercase">Fashion Entrepreneur</div>
               </div>
             </div>
           </div>
@@ -523,27 +510,28 @@ export default function Landing() {
         <div className="grid gap-6 md:grid-cols-3">
           {[
             {
-              author: "Aaditya Deshmukh",
-              title: "UPSC CSE AIR 4",
-              noteTitle: "How I Structured My 14-Hour Revision Strategy",
+              author: "Aditi Sharma",
+              title: "Creative Director",
+              noteTitle: "How I Grew My Brand to 100k Followers",
               color: "from-amber-400 to-orange-500",
+              imgUrl: "/fashion.png",
             },
             {
-              author: "Prof. Priya Sharma",
-              title: "GATE AIR 1",
-              noteTitle: "Mathematical Problem-Solving Under Pressure",
+              author: "Priya Sharma",
+              title: "D2C Founder",
+              noteTitle: "Sourcing Sustainable Fabrics in 2024",
               color: "from-emerald-400 to-teal-500",
             },
             {
               author: "Rohan Verma",
-              title: "CTO, Finlay",
-              noteTitle: "Architecture Decisions for 1M QPS Systems",
+              title: "Marketing Lead",
+              noteTitle: "Influencer Marketing Budgets for Bootstrapped Brands",
               color: "from-blue-400 to-indigo-600",
             },
           ].map((n) => (
             <div key={n.noteTitle} className="group cursor-pointer">
               <div className={`h-[180px] rounded-[32px] mb-6 bg-gradient-to-br ${n.color} shadow-lg relative overflow-hidden flex items-center justify-center`}>
-                <Avatar name={n.author} size={80} className="border-4 border-white/20 shadow-2xl" />
+                <Avatar name={n.author} size={80} className="border-4 border-white/20 shadow-2xl" imgUrl={n.imgUrl} />
               </div>
               <div className="px-2">
                 <div className="flex items-center gap-2 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-3">
