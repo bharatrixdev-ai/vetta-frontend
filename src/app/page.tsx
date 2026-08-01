@@ -24,7 +24,10 @@ import {
   BatteryFull,
   MicOff,
   Video as VideoIcon,
-  Phone
+  Phone,
+  FileText,
+  FileSpreadsheet,
+  MonitorPlay
 } from "lucide-react";
 import { Logo, VMark } from "@/components/Logo";
 import { LandingNav } from "@/components/LandingNav";
@@ -34,73 +37,55 @@ import { LUMINARIES } from "@/lib/data";
 
 const WALL = [...LUMINARIES, ...LUMINARIES];
 
-/* ───────── Phone Frame Component ───────── */
+/* ───────── Phone Frame Component (Custom iPhone with Dynamic Island) ───────── */
 function PhoneFrame({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`mockup-phone border-black shadow-2xl shadow-purple-900/10 max-w-[280px] sm:max-w-none mx-auto ${className}`}>
-      <div className="camera"></div>
-      <div className="display">
-        <div className="artboard artboard-demo phone-1 !h-auto !min-h-0 bg-[#0f0e13] p-0 overflow-hidden relative">
-          {/* Subtle gradient inside phone */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 via-transparent to-transparent pointer-events-none" />
-          {children}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ───────── Vetta Discover Screen (Minimal Nike Style) ───────── */
-function VettaHeroPhoneSplash() {
-  return (
-    <div 
-      className="w-full text-white pt-2 flex flex-col min-h-[460px] sm:min-h-[500px] relative z-10 rounded-[32px] overflow-hidden"
-      style={{ backgroundImage: "url('/fashion_live.png')", backgroundSize: "cover", backgroundPosition: "center" }}
-    >
-      {/* Subtle top overlay for text readability */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/50 to-transparent" />
-      
-      {/* Top Header - Nike Style Minimal */}
-      <div className="relative z-20 flex items-center justify-between px-5 mt-4">
-        {/* Avatar and Name */}
-        <div className="flex items-center gap-2">
-          <Avatar name="Aditi Sharma" size={24} imgUrl="/fashion.png" className="border border-white/20" />
-          <div className="flex flex-col justify-center">
-             <div className="text-[11px] font-bold text-white tracking-wide">Aditi Sharma</div>
-             {/* Progress line indicator (like in the screenshot) */}
-             <div className="w-16 h-0.5 bg-white/30 rounded-full mt-0.5">
-               <div className="w-2/3 h-full bg-white rounded-full" />
-             </div>
-          </div>
-        </div>
+    <div className={`relative mx-auto w-[280px] sm:w-[320px] h-[580px] sm:h-[650px] bg-black rounded-[48px] sm:rounded-[56px] shadow-2xl p-[6px] sm:p-[8px] ${className}`}>
+      {/* The screen */}
+      <div className="relative w-full h-full bg-[#ff7b47] rounded-[42px] sm:rounded-[48px] overflow-hidden">
         
-        {/* Live Badge */}
-        <div className="flex items-center gap-1.5 rounded-full bg-red-500/90 px-2.5 py-1 text-[9px] font-bold text-white shadow-lg uppercase tracking-widest">
-          <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" /> Live
+        {/* Dynamic Island */}
+        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-[100px] h-[30px] bg-black rounded-full z-50 flex items-center justify-between px-3">
+          <div className="w-2 h-2 rounded-full bg-white/10" />
+          <div className="w-2 h-2 rounded-full bg-indigo-500/50 shadow-[0_0_8px_2px_rgba(99,102,241,0.5)]" />
         </div>
+
+        {/* iPhone Status Bar (Right side) */}
+        <div className="absolute top-4 right-6 z-50 flex items-center gap-1.5">
+          <div className="flex items-end gap-0.5 h-2.5">
+            <div className="w-[2.5px] h-[3px] bg-white rounded-[1px]" />
+            <div className="w-[2.5px] h-[5px] bg-white rounded-[1px]" />
+            <div className="w-[2.5px] h-[7px] bg-white rounded-[1px]" />
+            <div className="w-[2.5px] h-[10px] bg-white rounded-[1px]" />
+          </div>
+          <Wifi size={12} strokeWidth={3} className="text-white" />
+          <BatteryFull size={16} strokeWidth={2} className="rotate-90 translate-y-[1px] text-white" />
+        </div>
+
+        {children}
       </div>
     </div>
   );
 }
 
-/* ───────── Floating Badge Component ───────── */
-function FloatingBadge({ children, className = "", delay = 0, x = 0, y = 0 }: any) {
+/* ───────── Floating Badge Component (with continuous 3D float) ───────── */
+function FloatingBadge({ children, className = "", delay = 0, x = 0, y = 0, floatOffset = -12, floatDuration = 4 }: any) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: x * 0.5, y: y * 0.5 + 10 }}
+      initial={{ opacity: 0, x: x, y: y + 20 }}
       animate={{ 
         opacity: 1, 
         x: 0, 
-        y: [0, -8, 0]
+        y: [0, floatOffset, 0]
       }}
       transition={{ 
-        opacity: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
-        x: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+        opacity: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
+        x: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
         y: { 
-          duration: 4, 
+          duration: floatDuration, 
           repeat: Infinity, 
           ease: "easeInOut",
-          delay: delay
+          delay: delay // starts floating smoothly after entry
         }
       }}
       className={`absolute z-20 ${className}`}
@@ -132,7 +117,7 @@ export default function Landing() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="text-[2.75rem] sm:text-[3.75rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight text-[#111111]"
           >
-            Meet the Super-fast<br />Expert Network
+            Master Your Brand<br />with Top Creators
           </motion.h1>
 
           <motion.p
@@ -141,7 +126,7 @@ export default function Landing() {
             transition={{ duration: 0.7, delay: 0.12 }}
             className="mx-auto mt-6 max-w-[36rem] text-[15px] sm:text-[17px] md:text-[19px] leading-relaxed text-slate-500 font-medium"
           >
-            Packed with lightning-fast 1:1 advisory video calls, interactive live roundtables, and practitioner notes — All 3x faster than traditional networking.
+            Access premium 1:1 advisory, live roundtables, and exclusive resources from verified fashion & lifestyle leaders.
           </motion.p>
 
           <motion.div
@@ -163,79 +148,107 @@ export default function Landing() {
           </motion.div>
         </div>
 
-        {/* ─── PHONE & REELUP-STYLE WIDGETS ─── */}
-        <div className="relative mx-auto mt-16 max-w-5xl flex flex-col items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 w-[260px] sm:w-[300px]"
-          >
-            <PhoneFrame>
-              <VettaHeroPhoneSplash />
-            </PhoneFrame>
-          </motion.div>
+        {/* ─── PHONE & FLOATING WIDGETS (Upwise Dribbble Layout) ─── */}
+        <div className="relative mx-auto mt-16 max-w-[900px] flex justify-center items-center h-[600px] sm:h-[700px]">
+            
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10"
+            >
+              <PhoneFrame>
+                {/* Inside the phone screen */}
+                <div 
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: "url('/fashion_live.png')" }}
+                />
+              </PhoneFrame>
+            </motion.div>
 
-          {/* Left Top Solid Yellow Block */}
-          <FloatingBadge className="left-[2%] top-[10%] hidden lg:block" delay={0.5} x={-30}>
-            <div className="w-[180px] rounded-[24px] bg-[#ffe600] p-5 shadow-xl shadow-amber-200/50 text-[#111111]">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10">
-                <Clock size={20} strokeWidth={2.5} />
-              </div>
-              <div className="mt-4 text-[32px] font-extrabold leading-none tracking-tight">15k<span className="text-[16px] font-bold">+</span></div>
-              <div className="mt-1 text-[11px] font-bold text-black/70">Hours Advisory Delivered</div>
+            {/* ─── LEFT SIDE FLOATING CARDS (Files) ─── */}
+            <div className="hidden lg:flex absolute left-0 top-[15%] flex-col gap-4 z-20">
+               {/* Card 1 */}
+               <FloatingBadge delay={0.4} x={-40} y={0} floatOffset={-8} floatDuration={4.5} className="static mb-4 ml-8">
+                 <div className="w-[130px] h-[130px] rounded-[24px] bg-[#222327] border border-white/10 shadow-2xl p-4 flex flex-col justify-between text-white hover:scale-105 transition-transform cursor-pointer">
+                   <div className="flex justify-between items-start">
+                     <div className="bg-red-500/20 p-2 rounded-xl text-red-400"><FileText size={20} /></div>
+                     <MonitorPlay size={14} className="text-white/40" />
+                   </div>
+                   <div>
+                     <div className="text-[12px] font-bold leading-tight">Brand Strategy<br/>Guide</div>
+                     <div className="text-[10px] text-white/50 mt-1">1.2 Mb</div>
+                   </div>
+                 </div>
+               </FloatingBadge>
+               
+               {/* Card 2 */}
+               <FloatingBadge delay={0.5} x={-30} y={0} floatOffset={-12} floatDuration={5} className="static mb-4">
+                 <div className="w-[130px] h-[130px] rounded-[24px] bg-[#222327] border border-white/10 shadow-2xl p-4 flex flex-col justify-between text-white hover:scale-105 transition-transform cursor-pointer">
+                   <div className="flex justify-between items-start">
+                     <div className="bg-blue-500/20 p-2 rounded-xl text-blue-400"><FileText size={20} /></div>
+                     <MonitorPlay size={14} className="text-white/40" />
+                   </div>
+                   <div>
+                     <div className="text-[12px] font-bold leading-tight">Persona<br/>Template</div>
+                     <div className="text-[10px] text-white/50 mt-1">500 Kb</div>
+                   </div>
+                 </div>
+               </FloatingBadge>
+               
+               {/* Card 3 */}
+               <FloatingBadge delay={0.6} x={-20} y={0} floatOffset={-10} floatDuration={4.2} className="static ml-12">
+                 <div className="w-[130px] h-[130px] rounded-[24px] bg-[#222327] border border-white/10 shadow-2xl p-4 flex flex-col justify-between text-white hover:scale-105 transition-transform cursor-pointer">
+                   <div className="flex justify-between items-start">
+                     <div className="bg-emerald-500/20 p-2 rounded-xl text-emerald-400"><FileSpreadsheet size={20} /></div>
+                     <MonitorPlay size={14} className="text-white/40" />
+                   </div>
+                   <div>
+                     <div className="text-[12px] font-bold leading-tight">JTBD<br/>Examples</div>
+                     <div className="text-[10px] text-white/50 mt-1">1.8 Mb</div>
+                   </div>
+                 </div>
+               </FloatingBadge>
             </div>
-          </FloatingBadge>
 
-          {/* Left Bottom White Pill (Share link style) */}
-          <FloatingBadge className="left-[12%] bottom-[20%] hidden lg:block" delay={0.6} x={-20}>
-            <div className="flex items-center gap-3 rounded-full bg-white p-2.5 pr-6 shadow-xl border border-slate-100">
-              <Avatar name="Aditi Sharma" size={40} imgUrl="/fashion.png" />
-              <div>
-                <div className="text-[12px] font-bold leading-tight">Share mentor<br />booking link</div>
-                <div className="mt-1 inline-flex items-center gap-1 rounded bg-[#111111] px-2 py-0.5 text-[9px] font-bold text-white">
-                  Get Link
+            {/* ─── RIGHT SIDE FLOATING CARD (Video Player) ─── */}
+            <FloatingBadge className="right-[-5%] lg:right-[5%] bottom-[15%] hidden md:block" delay={0.7} x={40} floatOffset={-15} floatDuration={5.5}>
+              <div className="w-[280px] h-[180px] rounded-[24px] overflow-hidden shadow-2xl border-4 border-[#222327] bg-[#222327] relative group cursor-pointer">
+                {/* Using a generated blog image for the video player background */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity"
+                  style={{ backgroundImage: "url('/blog1.png')" }} 
+                />
+                
+                {/* Video Controls Overlay */}
+                <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-4">
+                  {/* Play Button Center */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-6">
+                    <div className="h-8 w-8 rounded-full border border-white/50 flex items-center justify-center text-white/80 hover:text-white hover:border-white transition-colors">
+                      <span className="text-[8px] font-bold">15</span>
+                    </div>
+                    <div className="h-14 w-14 rounded-full bg-white flex items-center justify-center text-[#222327] shadow-lg hover:scale-110 transition-transform">
+                      <Play size={24} fill="currentColor" className="ml-1" />
+                    </div>
+                    <div className="h-8 w-8 rounded-full border border-white/50 flex items-center justify-center text-white/80 hover:text-white hover:border-white transition-colors">
+                      <span className="text-[8px] font-bold">15</span>
+                    </div>
+                  </div>
+
+                  {/* Progress Bar & Time */}
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 h-1.5 bg-white/30 rounded-full overflow-hidden">
+                      <div className="w-[45%] h-full bg-white rounded-full" />
+                    </div>
+                    <div className="text-[10px] font-bold text-white tracking-widest">
+                      07:29 / 15:00
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </FloatingBadge>
-
-          {/* Right Top Light White Card (Shoe equivalent) */}
-          <FloatingBadge className="right-[5%] top-[15%] hidden lg:block" delay={0.6} x={30}>
-            <div className="w-[160px] rounded-3xl bg-white p-3 shadow-2xl border border-slate-100 text-[#111111]">
-              <div className="h-32 w-full rounded-2xl bg-[#e6ddff] flex items-center justify-center overflow-hidden relative">
-                 <Avatar name="Kriti Verma" size={80} className="translate-y-4" />
-              </div>
-              <div className="mt-3 px-1 pb-1">
-                <div className="text-[12px] font-bold">Style Creators</div>
-                <div className="text-[11px] font-bold text-slate-500 mt-0.5">from ₹1500</div>
-              </div>
-            </div>
-          </FloatingBadge>
-
-          {/* Right Bottom Solid Orange Block */}
-          <FloatingBadge className="right-[8%] bottom-[25%] hidden lg:block" delay={0.75} x={20}>
-            <div className="w-[160px] rounded-[24px] bg-[#ff7b47] p-5 shadow-xl shadow-orange-500/30 text-white flex flex-col justify-between h-[150px]">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20">
-                <Globe size={20} strokeWidth={2.5} />
-              </div>
-              <div>
-                <div className="text-[32px] font-extrabold leading-none tracking-tight">400+</div>
-                <div className="mt-1 text-[10px] font-bold text-white/80 uppercase tracking-wide">Verified Mentors</div>
-              </div>
-            </div>
-          </FloatingBadge>
-
-          {/* Mobile badges */}
-          <div className="flex lg:hidden flex-wrap items-center justify-center gap-2 mt-8 z-20">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ffe600] text-black px-4 py-2 text-[12px] font-bold shadow-md">
-              <Clock size={14} /> 15k+ Hours
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ff7b47] text-white px-4 py-2 text-[12px] font-bold shadow-md">
-              <Globe size={14} /> 400+ Mentors
-            </span>
+            </FloatingBadge>
+            
           </div>
-        </div>
       </section>
 
       {/* ═══════════════════ MARQUEE BRAND WALL ═══════════════════ */}
