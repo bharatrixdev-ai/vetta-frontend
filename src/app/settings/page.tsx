@@ -34,6 +34,7 @@ type Visibility = "everyone" | "members" | "nobody";
 const TILES = [
   { id: "privacy", label: "Privacy", Icon: Shield },
   { id: "feed", label: "Your feed", Icon: Sliders },
+  { id: "theme", label: "Theme", Icon: Moon },
   { id: "notifications", label: "Alerts", Icon: Bell },
   { id: "payments", label: "Payments", Icon: CreditCard },
   { id: "language", label: "Language", Icon: Globe },
@@ -288,6 +289,39 @@ export default function Settings() {
               })}
             </div>
             <p className="mt-4 text-[11.5px] text-faint">{fields.length} fields active</p>
+          </div>
+        )}
+
+        {active === "theme" && (
+          <div className="p-5">
+            <SectionLabel>Theme</SectionLabel>
+            <div className="mt-3 grid grid-cols-2 gap-3">
+              {(
+                [
+                  [false, "Dark Mode", Moon, "#0b0b0c", "#f4f5f7"],
+                  [true, "Light Mode", Sun, "#f4f5f8", "#0f1218"],
+                ] as const
+              ).map(([val, label, Icon, bg, fg]) => (
+                <button
+                  key={label}
+                  onClick={() => toggleTheme(val)}
+                  aria-pressed={light === val}
+                  className={cn(
+                    "rounded-2xl border p-4 transition-all text-left flex flex-col justify-between h-28",
+                    light === val ? "border-accent bg-accent/10 ring-1 ring-accent/40" : "border-line bg-wash hover:border-line-2"
+                  )}
+                >
+                  <div className="flex items-center justify-between">
+                    <Icon size={20} className={light === val ? "text-accent" : "text-mute"} />
+                    {light === val && <span className="h-2 w-2 rounded-full bg-accent" />}
+                  </div>
+                  <div className="text-[13.5px] font-semibold text-ink">{label}</div>
+                </button>
+              ))}
+            </div>
+            <p className="mt-3.5 text-[12px] leading-relaxed text-mute">
+              Theme defaults to your system settings, or choose Dark / Light mode above.
+            </p>
           </div>
         )}
 

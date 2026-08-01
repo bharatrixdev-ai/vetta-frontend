@@ -29,10 +29,10 @@ import { LUMINARIES, NOTES, ROUNDTABLES, byHandle } from "@/lib/data";
 import { inr } from "@/lib/utils";
 
 // Curated high-res Unsplash images for editorial aesthetic
-const HERO_IMAGE = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop";
-const EDITORIAL_CARD_1 = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop";
-const EDITORIAL_CARD_2 = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop";
-const EDITORIAL_CARD_3 = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop";
+const HERO_IMAGE = "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1600&auto=format&fit=crop";
+const EDITORIAL_CARD_1 = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop";
+const EDITORIAL_CARD_2 = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop";
+const EDITORIAL_CARD_3 = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop";
 
 const WALL = [...LUMINARIES, ...LUMINARIES];
 
@@ -42,10 +42,10 @@ function MiniSession({ className = "" }: { className?: string }) {
   return (
     <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#121626] via-[#1a1c36] to-[#251a3d] border border-white/10 ${className}`}>
       <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xl bg-black/50 px-2.5 py-1 text-[10px] font-medium text-white backdrop-blur-md">
-        <Verified size={10} /> Dr. Sarah Kim
+        <Verified size={10} /> Aaditya Deshmukh (AIR 4)
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
-        <Avatar name="Dr. Sarah Kim" size={64} />
+        <Avatar name="Aaditya Deshmukh" size={64} />
       </div>
       <div className="absolute bottom-3 right-3 h-[44px] w-[64px] rounded-xl bg-gradient-to-br from-[#1c2b47] to-[#2a2344] ring-1 ring-white/20" />
       <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 backdrop-blur-md">
@@ -67,16 +67,16 @@ function MiniTable({ className = "" }: { className?: string }) {
   return (
     <div className={`glass-soft rounded-2xl p-4 border border-white/10 ${className}`}>
       <div className="flex items-center gap-1.5 text-[9.5px] font-bold text-accent">
-        <span className="anim-pulse-soft h-1.5 w-1.5 rounded-full bg-accent" /> LIVE · 214
+        <span className="anim-pulse-soft h-1.5 w-1.5 rounded-full bg-accent" /> LIVE · 312
       </div>
       <div className="mt-1.5 text-[12px] font-semibold leading-snug text-white">
-        Raising in 2026 — what changed
+        Cracking Competitive Exams & Leadership Strategy
       </div>
       <div className="mt-2.5 flex justify-center gap-2.5">
         <div className="anim-speak rounded-full">
-          <Avatar name="Ananya Iyer" size={34} ring />
+          <Avatar name="Aaditya Deshmukh" size={34} ring />
         </div>
-        <Avatar name="James Okafor" size={34} ring />
+        <Avatar name="Prof. Priya Sharma" size={34} ring />
       </div>
       <div className="mt-2.5 grid grid-cols-8 gap-1">
         {Array.from({ length: 16 }).map((_, i) => (
@@ -88,7 +88,7 @@ function MiniTable({ className = "" }: { className?: string }) {
 }
 
 function MiniNote({ className = "" }: { className?: string }) {
-  const a = byHandle("rohan-verma")!;
+  const a = byHandle("aaditya-deshmukh") ?? byHandle("rohan-verma")!;
   return (
     <div className={`glass-soft rounded-2xl p-4 border border-white/10 ${className}`}>
       <div className="flex items-center gap-2">
@@ -98,10 +98,10 @@ function MiniNote({ className = "" }: { className?: string }) {
         </span>
       </div>
       <p className="mt-2 text-[11px] leading-relaxed text-white/80">
-        Your first 10 engineers set the ceiling for your next 100.
+        Prelims testing is about elimination logic, not just rote memory.
       </p>
       <span className="mt-2.5 inline-block rounded-full bg-gradient-to-r from-[#3E6FE8] to-[#6E5BF0] px-2.5 py-1 text-[9.5px] font-bold text-white shadow-xs">
-        Noted. 342
+        Noted. 512
       </span>
     </div>
   );
@@ -136,7 +136,7 @@ export default function Landing() {
     <div className="min-h-dvh overflow-x-clip bg-[#0b0b0c] text-white selection:bg-[#3E6FE8]/30 font-sans">
       <LandingNav />
 
-      {/* ───────────────── Hero Section (Matching Vetta Logo Gradient) ───────────────── */}
+      {/* ───────────────── Hero Section ───────────────── */}
       <section className="relative px-5 pb-20 pt-32 md:pb-32 md:pt-44">
         {/* Ambient Glowing Orbs */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -163,9 +163,9 @@ export default function Landing() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto mt-6 max-w-[36rem] text-[16px] leading-relaxed text-white/70 md:text-[18.5px]"
+            className="mx-auto mt-6 max-w-[38rem] text-[16px] leading-relaxed text-white/75 md:text-[18.5px]"
           >
-            Every profile is a verified track record. Book 1:1 strategy calls, join head-table discussions, and read direct practitioner signal.
+            Verified track records of top exam rankers, master tutors, tech leaders, and civic figures. Book 1:1 advisory calls, join head-table discussions, and learn from those who cracked what you aim for.
           </motion.p>
 
           {/* Claim Handle Bar */}
@@ -196,13 +196,13 @@ export default function Landing() {
             className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] text-white/50"
           >
             <span className="inline-flex items-center gap-1.5">
-              <ShieldCheck size={14} className="text-accent" /> Verified Practitioner Track Records
+              <ShieldCheck size={14} className="text-accent" /> Exam Cracked Rankers & Tutors
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Sliders size={14} className="text-violet" /> Algorithmic Feed Control
+              <Sliders size={14} className="text-violet" /> Verified Leaders & Executives
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <CalendarClock size={14} className="text-accent" /> Direct 1:1 Calendar Access
+              <CalendarClock size={14} className="text-accent" /> Direct 1:1 Mentorship Access
             </span>
           </motion.div>
         </div>
@@ -229,12 +229,12 @@ export default function Landing() {
                 Imagine a space between vision & impact.
               </h2>
               <p className="mt-4 text-[15.5px] leading-relaxed text-white/70">
-                We craft verified identities, high-signal narratives, and digital experiences that match your ambition. Connect directly with founders, CTOs, and investors who have built what you are building.
+                Connect directly with UPSC/GATE toppers, master tutors, engineering CTOs, and civic leaders who have mastered what you are striving for.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link href="/discover">
                   <Button className="!bg-white !text-black hover:!bg-white/90 font-semibold !px-6 !py-3">
-                    Explore Network <ArrowRight size={15} />
+                    Explore Mentors & Leaders <ArrowRight size={15} />
                   </Button>
                 </Link>
                 <Link href="/apply">
@@ -245,24 +245,24 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* Editorial Hero Visual */}
+            {/* Curated Editorial Hero Image */}
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
               <img
                 src={HERO_IMAGE}
-                alt="Vision and Impact Editorial Artwork"
+                alt="Executive & Mentor Editorial Visual"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl bg-black/60 p-3 backdrop-blur-md border border-white/10">
                 <div className="flex items-center gap-2.5">
-                  <Avatar name="Alex Chen" size={32} />
+                  <Avatar name="Aaditya Deshmukh" size={32} />
                   <div>
-                    <div className="text-[12.5px] font-semibold text-white">Alex Chen</div>
-                    <div className="text-[10.5px] text-white/60">Managing Partner · Apex Ventures</div>
+                    <div className="text-[12.5px] font-semibold text-white">Aaditya Deshmukh</div>
+                    <div className="text-[10.5px] text-white/60">UPSC CSE AIR 4 · IAS & Policy Fellow</div>
                   </div>
                 </div>
                 <span className="rounded-full bg-[#3E6FE8]/30 border border-[#3E6FE8]/40 px-2.5 py-1 text-[10.5px] font-semibold text-blue-200">
-                  Live Session
+                  Top Mentor
                 </span>
               </div>
             </div>
