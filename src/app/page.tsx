@@ -117,7 +117,7 @@ export default function Landing() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="text-[2.75rem] sm:text-[3.75rem] md:text-[5rem] font-extrabold leading-[1.05] tracking-tight text-[#111111]"
           >
-            Master Your Brand<br />with Top Creators
+            Meet the people<br />worth meeting.
           </motion.h1>
 
           <motion.p
@@ -126,7 +126,7 @@ export default function Landing() {
             transition={{ duration: 0.7, delay: 0.12 }}
             className="mx-auto mt-6 max-w-[36rem] text-[15px] sm:text-[17px] md:text-[19px] leading-relaxed text-slate-500 font-medium"
           >
-            Access premium 1:1 advisory, live roundtables, and exclusive resources from verified fashion & lifestyle leaders.
+            Access premium 1:1 advisory, live roundtables, and exclusive resources from verified leaders across Fashion, Tech, Politics, and Top Academics (JEE Toppers).
           </motion.p>
 
           <motion.div
@@ -160,52 +160,75 @@ export default function Landing() {
               <PhoneFrame>
                 {/* Inside the phone screen */}
                 <div 
-                  className="w-full h-full bg-cover bg-center"
+                  className="w-full h-full bg-cover bg-center flex flex-col justify-between pt-10 pb-8"
                   style={{ backgroundImage: "url('/fashion_live.png')" }}
-                />
+                >
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 pointer-events-none" />
+                  
+                  {/* Picture in Picture (Mentee) */}
+                  <div className="relative z-20 mt-4 mr-4 self-end w-20 h-28 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl bg-gradient-to-br from-slate-800 to-slate-900">
+                     <div className="absolute inset-0 flex items-center justify-center">
+                        <Avatar name="Mentee User" size={80} className="opacity-50 blur-sm" />
+                     </div>
+                     <div className="absolute inset-0 bg-black/20" />
+                  </div>
+
+                  {/* Bottom Call Controls */}
+                  <div className="relative z-20 mt-auto px-4 w-full flex items-center justify-center gap-4">
+                     <div className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
+                        <MicOff size={20} className="text-white" />
+                     </div>
+                     <div className="h-14 w-14 rounded-full bg-red-500 shadow-xl shadow-red-500/30 flex items-center justify-center cursor-pointer hover:bg-red-600 transition-colors">
+                        <Phone size={24} className="text-white rotate-[135deg]" fill="currentColor" />
+                     </div>
+                     <div className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
+                        <VideoIcon size={20} className="text-white" />
+                     </div>
+                  </div>
+                </div>
               </PhoneFrame>
             </motion.div>
 
-            {/* ─── LEFT SIDE FLOATING CARDS (Files) ─── */}
+            {/* ─── LEFT SIDE FLOATING CARDS (Features) ─── */}
             <div className="hidden lg:flex absolute left-0 top-[15%] flex-col gap-4 z-20">
                {/* Card 1 */}
                <FloatingBadge delay={0.4} x={-40} y={0} floatOffset={-8} floatDuration={4.5} className="static mb-4 ml-8">
-                 <div className="w-[130px] h-[130px] rounded-[24px] bg-[#222327] border border-white/10 shadow-2xl p-4 flex flex-col justify-between text-white hover:scale-105 transition-transform cursor-pointer">
+                 <div className="w-[140px] h-[130px] rounded-[24px] bg-[#222327] border border-white/10 shadow-2xl p-4 flex flex-col justify-between text-white hover:scale-105 transition-transform cursor-pointer">
                    <div className="flex justify-between items-start">
-                     <div className="bg-red-500/20 p-2 rounded-xl text-red-400"><FileText size={20} /></div>
+                     <div className="bg-red-500/20 p-2 rounded-xl text-red-400"><VideoIcon size={20} /></div>
                      <MonitorPlay size={14} className="text-white/40" />
                    </div>
                    <div>
-                     <div className="text-[12px] font-bold leading-tight">Brand Strategy<br/>Guide</div>
-                     <div className="text-[10px] text-white/50 mt-1">1.2 Mb</div>
+                     <div className="text-[12px] font-bold leading-tight">1:1 Expert<br/>Advisory</div>
+                     <div className="text-[10px] text-white/50 mt-1">Video Calls</div>
                    </div>
                  </div>
                </FloatingBadge>
                
                {/* Card 2 */}
                <FloatingBadge delay={0.5} x={-30} y={0} floatOffset={-12} floatDuration={5} className="static mb-4">
-                 <div className="w-[130px] h-[130px] rounded-[24px] bg-[#222327] border border-white/10 shadow-2xl p-4 flex flex-col justify-between text-white hover:scale-105 transition-transform cursor-pointer">
+                 <div className="w-[140px] h-[130px] rounded-[24px] bg-[#222327] border border-white/10 shadow-2xl p-4 flex flex-col justify-between text-white hover:scale-105 transition-transform cursor-pointer">
                    <div className="flex justify-between items-start">
-                     <div className="bg-blue-500/20 p-2 rounded-xl text-blue-400"><FileText size={20} /></div>
+                     <div className="bg-blue-500/20 p-2 rounded-xl text-blue-400"><Users size={20} /></div>
                      <MonitorPlay size={14} className="text-white/40" />
                    </div>
                    <div>
-                     <div className="text-[12px] font-bold leading-tight">Persona<br/>Template</div>
-                     <div className="text-[10px] text-white/50 mt-1">500 Kb</div>
+                     <div className="text-[12px] font-bold leading-tight">Live Group<br/>Roundtables</div>
+                     <div className="text-[10px] text-white/50 mt-1">Multi-host</div>
                    </div>
                  </div>
                </FloatingBadge>
                
                {/* Card 3 */}
                <FloatingBadge delay={0.6} x={-20} y={0} floatOffset={-10} floatDuration={4.2} className="static ml-12">
-                 <div className="w-[130px] h-[130px] rounded-[24px] bg-[#222327] border border-white/10 shadow-2xl p-4 flex flex-col justify-between text-white hover:scale-105 transition-transform cursor-pointer">
+                 <div className="w-[140px] h-[130px] rounded-[24px] bg-[#222327] border border-white/10 shadow-2xl p-4 flex flex-col justify-between text-white hover:scale-105 transition-transform cursor-pointer">
                    <div className="flex justify-between items-start">
-                     <div className="bg-emerald-500/20 p-2 rounded-xl text-emerald-400"><FileSpreadsheet size={20} /></div>
+                     <div className="bg-emerald-500/20 p-2 rounded-xl text-emerald-400"><BookOpen size={20} /></div>
                      <MonitorPlay size={14} className="text-white/40" />
                    </div>
                    <div>
-                     <div className="text-[12px] font-bold leading-tight">JTBD<br/>Examples</div>
-                     <div className="text-[10px] text-white/50 mt-1">1.8 Mb</div>
+                     <div className="text-[12px] font-bold leading-tight">Curated<br/>Notes</div>
+                     <div className="text-[10px] text-white/50 mt-1">Exclusive</div>
                    </div>
                  </div>
                </FloatingBadge>
@@ -240,8 +263,8 @@ export default function Landing() {
                     <div className="flex-1 h-1.5 bg-white/30 rounded-full overflow-hidden">
                       <div className="w-[45%] h-full bg-white rounded-full" />
                     </div>
-                    <div className="text-[10px] font-bold text-white tracking-widest">
-                      07:29 / 15:00
+                    <div className="text-[10px] font-bold text-white tracking-widest uppercase">
+                      Live Advisory
                     </div>
                   </div>
                 </div>
@@ -549,15 +572,15 @@ export default function Landing() {
               imgUrl: "/fashion.png",
             },
             {
-              author: "Priya Sharma",
-              title: "D2C Founder",
-              noteTitle: "Sourcing Sustainable Fabrics in 2024",
+              author: "Sagar Singh",
+              title: "Politician",
+              noteTitle: "Winning the Youth Vote in 2024",
               color: "from-emerald-400 to-teal-500",
             },
             {
-              author: "Rohan Verma",
-              title: "Marketing Lead",
-              noteTitle: "Influencer Marketing Budgets for Bootstrapped Brands",
+              author: "Aman Jain",
+              title: "JEE Topper",
+              noteTitle: "Cracking the Advanced Physics Section",
               color: "from-blue-400 to-indigo-600",
             },
           ].map((n) => (
