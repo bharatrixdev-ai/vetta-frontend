@@ -68,10 +68,6 @@ export function LandingNav() {
               <Link href="/" aria-label="Vetta home" className="flex items-center gap-2">
                 <Logo wordClass="!text-white" />
               </Link>
-              <span className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-[#3E6FE8]/40 bg-[#3E6FE8]/20 px-3 py-1 text-[11px] font-medium text-blue-200 backdrop-blur-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#4f8dff] animate-pulse" />
-                Verified Practitioner Network
-              </span>
             </div>
 
             <nav className="hidden items-center gap-1 md:flex" aria-label="Sections">
