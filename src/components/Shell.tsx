@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo, VMark } from "@/components/Logo";
@@ -18,6 +19,8 @@ import { CreateButton } from "@/components/CreateSheet";
 import { Verified } from "@/components/ui";
 import { useRole } from "@/lib/role";
 import { cn } from "@/lib/utils";
+import { NotificationTrigger, NotificationSheet } from "@/components/NotificationSheet";
+import { SplashScreen } from "@/components/SplashScreen";
 
 type IconCmp = typeof Home;
 
@@ -33,12 +36,20 @@ function tabsFor(handle: string): Array<{ href: string; label: string; Icon: Ico
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { me, role } = useRole();
+  const [showNotifications, setShowNotifications] = useState(false);
   const TABS = tabsFor(me.handle);
+
   const isActive = (href: string) =>
     href === "/app" ? pathname === "/app" : pathname.startsWith(href.split("/")[1] ? `/${href.split("/")[1]}` : href);
 
+  // Split tabs for placing CreateButton in the middle of mobile nav
+  const leftTabs = TABS.slice(0, 2); // Home, Discover
+  const rightTabs = TABS.slice(2);    // Messages, Profile
+
   return (
     <div className="min-h-dvh bg-bg">
+      <SplashScreen />
+
       {/* Desktop rail */}
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-[228px] flex-col border-r border-line bg-bg/85 px-4 py-6 backdrop-blur-xl md:flex">
         <div className="flex items-center justify-between px-2">
@@ -138,28 +149,24 @@ export function Shell({ children }: { children: React.ReactNode }) {
         </Link>
         <div className="flex items-center gap-1">
           <ThemeToggle className="h-9 w-9 border-0 bg-transparent" />
-          <Link
-            href="/messages"
-            aria-label="Messages"
-            className="relative flex h-9 w-9 items-center justify-center rounded-full text-mute"
-          >
-            <MessageSquare size={20} strokeWidth={1.75} />
-            <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-accent ring-2 ring-bg" />
-          </Link>
+          <NotificationTrigger onClick={() => setShowNotifications(true)} unreadCount={3} />
         </div>
       </header>
+
+      {/* Notification Sheet */}
+      <NotificationSheet isOpen={showNotifications} onClose={() => setShowNotifications(false)} />
 
       {/* Content */}
       <main className="px-4 pb-32 pt-[72px] md:ml-[228px] md:px-10 md:pb-16 md:pt-10">
         <div className="mx-auto w-full max-w-[680px]">{children}</div>
       </main>
 
-      {/* Mobile bottom nav */}
+      {/* Mobile bottom nav — 5 components with Create button in the exact middle */}
       <nav
         aria-label="Primary"
         className="glass-strong fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-40 flex items-center justify-around rounded-[26px] px-1.5 py-2 md:hidden"
       >
-        {TABS.map(({ href, label, Icon }) => {
+        {leftTabs.map(({ href, label, Icon }) => {
           const active = isActive(href);
           return (
             <Link
@@ -168,7 +175,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               aria-label={label}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "flex min-h-[44px] min-w-[56px] flex-col items-center justify-center gap-0.5 rounded-2xl transition-transform duration-200",
+                "flex min-h-[44px] min-w-[52px] flex-col items-center justify-center gap-0.5 rounded-2xl transition-transform duration-200",
                 active && "-translate-y-0.5"
               )}
             >
@@ -188,8 +195,43 @@ export function Shell({ children }: { children: React.ReactNode }) {
             </Link>
           );
         })}
-        <CreateButton className="ml-0.5" />
+
+        {/* Center 3rd Component: Create Button */}
+        <div className="flex items-center justify-center min-w-[52px]">
+          <CreateButton className="!m-0" />
+        </div>
+
+        {rightTabs.map(({ href, label, Icon }) => {
+          const active = isActive(href);
+          return (
+            <Link
+              key={href}
+              href={href}
+              aria-label={label}
+              aria-current={active ? "page" : undefined}
+              className={cn(
+                "flex min-h-[44px] min-w-[52px] flex-col items-center justify-center gap-0.5 rounded-2xl transition-transform duration-200",
+                active && "-translate-y-0.5"
+              )}
+            >
+              <Icon
+                size={21}
+                strokeWidth={active ? 2.2 : 1.75}
+                className={active ? "text-ink" : "text-faint"}
+              />
+              <span
+                className={cn(
+                  "text-[10px] font-medium",
+                  active ? "text-ink" : "text-faint"
+                )}
+              >
+                {label}
+              </span>
+            </Link>
+          );
+        })}
       </nav>
     </div>
   );
 }
+
