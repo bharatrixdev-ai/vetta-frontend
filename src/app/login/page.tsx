@@ -13,7 +13,7 @@ export default function Login() {
 
   const enter = () => {
     setStage("entering");
-    setTimeout(() => router.push("/onboarding"), 700);
+    setTimeout(() => router.push("/app"), 500);
   };
 
   return (
