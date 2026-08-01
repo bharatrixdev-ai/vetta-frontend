@@ -60,13 +60,13 @@ export function LandingNav() {
             className={cn(
               "flex items-center justify-between rounded-full px-4 transition-all duration-300",
               scrolled
-                ? "bg-[#0b0b0c]/95 border border-white/15 shadow-[0_15px_40px_rgba(0,0,0,0.95)] backdrop-blur-3xl py-2"
-                : "bg-[#121629] border border-[#3E6FE8]/50 shadow-[0_10px_40px_rgba(0,0,0,0.85)] backdrop-blur-2xl py-2.5"
+                ? "bg-white/90 border border-slate-200 shadow-[0_15px_40px_rgba(0,0,0,0.08)] backdrop-blur-3xl py-2"
+                : "bg-transparent border border-transparent py-2.5"
             )}
           >
             <div className="flex items-center gap-3 pl-1.5">
               <Link href="/" aria-label="Vetta home" className="flex items-center gap-2">
-                <Logo wordClass="!text-white" />
+                <Logo wordClass="!text-slate-900" />
               </Link>
             </div>
 
@@ -93,8 +93,8 @@ export function LandingNav() {
                     className={cn(
                       "relative rounded-full px-3.5 py-2 text-[13.5px] font-medium transition-colors",
                       isSectionActive
-                        ? "text-white font-semibold"
-                        : "text-white/85 hover:text-white"
+                        ? "text-slate-900 font-semibold"
+                        : "text-slate-500 hover:text-slate-900"
                     )}
                   >
                     {l.label}
@@ -106,47 +106,55 @@ export function LandingNav() {
               })}
             </nav>
 
-            <div className="flex items-center gap-2">
-              <Link href="/login" className="hidden sm:block">
-                <Button variant="ghost" className="!px-4 !py-2 !text-[13px] !text-white !bg-white/10 border border-white/20 hover:!bg-white/20">
+            <div className="hidden items-center gap-2 md:flex pr-1">
+              <Link href="/login">
+                <Button variant="ghost" className="!text-slate-600 hover:!text-slate-900 hover:!bg-slate-100 !px-4 !font-medium">
                   Log in
                 </Button>
               </Link>
               <Link href="/login">
-                <Button className="!px-4 !py-2 !text-[13px] !vgrad !text-white font-semibold shadow-md">
+                <Button className="!bg-slate-900 !text-white hover:!bg-slate-800 !px-5 !py-2 !h-9 shadow-md rounded-full font-medium">
                   Sign up
                 </Button>
               </Link>
-              <button
+            </div>  
+            <button
                 aria-label={open ? "Close menu" : "Open menu"}
                 onClick={() => setOpen((v) => !v)}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-white/90 hover:text-white md:hidden"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-slate-600 hover:bg-slate-100 md:hidden"
               >
                 {open ? <X size={20} /> : <Menu size={20} />}
-              </button>
-            </div>
+            </button>
           </div>
 
-          {/* Mobile sheet */}
           {open && (
-            <div className="glass-strong anim-fade-up mt-2 rounded-3xl p-3 md:hidden">
-              {LINKS.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block rounded-2xl px-4 py-3 text-[14px] font-medium text-mute transition-colors hover:bg-wash hover:text-ink"
-                >
-                  {l.label}
-                </a>
-              ))}
-              <div className="mt-1 border-t border-line pt-2">
-                <Link
-                  href="/apply"
-                  className="block rounded-2xl px-4 py-3 text-[14px] font-semibold vgrad-text"
-                >
-                  Apply as a Luminary →
-                </Link>
+            <div
+              className={cn(
+                "fixed inset-y-0 right-0 z-50 w-[280px] bg-white shadow-2xl transition-transform duration-300 ease-out",
+                open ? "translate-x-0" : "translate-x-full"
+              )}
+            >
+              <div className="flex h-full flex-col px-6 py-8">
+                <div className="flex items-center justify-between mb-8">
+                  <Logo wordClass="!text-slate-900" />
+                  <button
+                    onClick={() => setOpen(false)}
+                    className="rounded-full p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+                    aria-label="Close menu"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
+                {LINKS.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-xl px-4 py-3 text-[15px] font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                  >
+                    {l.label}
+                  </a>
+                ))}
               </div>
             </div>
           )}
