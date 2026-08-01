@@ -102,6 +102,7 @@ export function Button({
 export function Verified({ className, size = 14 }: { className?: string; size?: number }) {
   return (
     <svg
+      suppressHydrationWarning
       viewBox="0 0 20 20"
       width={size}
       height={size}

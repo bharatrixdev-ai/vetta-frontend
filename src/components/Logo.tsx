@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 /** The Vetta ribbon-V — blue left stroke, lilac→violet right sweeping into the tail. */
 export function VMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 48" className={cn("h-8 w-8", className)} aria-hidden fill="none">
+    <svg suppressHydrationWarning viewBox="0 0 48 48" className={cn("h-8 w-8", className)} aria-hidden fill="none">
       <defs>
         <linearGradient id="vgL" x1="10" y1="10" x2="26" y2="40" gradientUnits="userSpaceOnUse">
           <stop stopColor="#63A0FF" />

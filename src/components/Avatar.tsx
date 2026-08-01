@@ -16,6 +16,7 @@ export function Avatar({
   const [a, b] = hueFor(seed ?? name);
   return (
     <div
+      suppressHydrationWarning
       className={cn(
         "relative flex shrink-0 select-none items-center justify-center rounded-full font-semibold text-white",
         ring && "ring-2 ring-line-2",

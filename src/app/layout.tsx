@@ -65,8 +65,13 @@ export default async function RootLayout({
   const theme = (await cookies()).get("vetta-theme")?.value;
 
   return (
-    <html lang="en" className={theme === "light" ? "light" : undefined}>
-      <body className={`${inter.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning className={theme === "light" ? "light" : undefined}>
+      <head>
+        {/* Tell Dark Reader to skip this page — prevents all SVG child hydration mismatches */}
+        <meta name="darkreader-lock" />
+        <meta name="color-scheme" content="dark light" />
+      </head>
+      <body suppressHydrationWarning className={`${inter.variable} antialiased`}>
         <ThemeSync />
         <RoleProvider>{children}</RoleProvider>
       </body>
